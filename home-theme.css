@@ -119,7 +119,7 @@ html[lang=en] .hero h1 { font-size: clamp(40px, 4.7vw, 70px); white-space: norma
   .howto-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }.howto-card:nth-child(2) { border-right: 0; }.howto-card:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
 }
 @media (max-width: 760px) {
-  html { scroll-padding-top: 20px; }
+  html { scroll-padding-top: 88px; }
   .site-masthead { height: 68px; gap: 0; padding: 0 18px; }
   .masthead-language-slot { width: auto; right: 14px; }.masthead-nav-slot { width: 100%; margin: 0; padding: 0 76px 0 0; }
   .nav { text-align: left; display: flex; justify-content: center; gap: 15px; }.nav a { font-size: 11px; margin: 0; }

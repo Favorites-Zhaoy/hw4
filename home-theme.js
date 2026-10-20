@@ -1,4 +1,5 @@
 import { createSoftBookIntro } from './soft-book.js';
+import { initChapterExplorer } from './chapter-explorer.js';
 
 /* Progressive enhancement: the complete course stays readable without this script. */
 (() => {
@@ -21,7 +22,8 @@ import { createSoftBookIntro } from './soft-book.js';
   languageObserver.observe(document.body, { childList: true });
   if (!reducedMotion.matches) document.body.classList.add('motion-ready');
 
-  const revealElements = document.querySelectorAll('.card, .howto-card, .about-item');
+  initChapterExplorer();
+  const revealElements = document.querySelectorAll('.howto-card, .about-item');
   if ('IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver(entries => {
       for (const entry of entries) {
