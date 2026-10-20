@@ -1,54 +1,42 @@
 # 《可视化导论》课程门户
 
-零依赖的静态课程门户。点开就是一张 4 章节卡片墙，点击进入任一章节查看 讲解 / 代码 / 演示 三 tab 集成页面。
+基于 HTML、CSS、ES modules 与 D3.js 的静态课程网站，包含数据、可视化流程、色彩、低维数据、时序数据五章。首页提供学习入口、章节目标和图形预览；章节内提供讲解 / 关键代码 / 演示。
 
-## 📂 目录结构
+## 本地预览
 
-```
-docs/portal/
-├── index.html              # 课程门户首页
-├── styles.css              # 门户样式
-└── lesson-01/              # 第 1 章：数据（已上线）
-    ├── index.html          # 集成教学页面
-    ├── lesson.js           # tab 切换 + 演示
-    ├── styles.css          # lesson 内部样式
-    └── data/               # newstudent.csv（80 条新生数据）
-```
-
-## ▶️ 本地启动
+在仓库根目录运行：
 
 ```bash
-cd docs/portal
 python -m http.server 8080
-
-# 浏览器打开
-# 主页：http://localhost:8080
-# 第1章：http://localhost:8080/lesson-01/
 ```
 
-## 🌐 发布
+访问 http://localhost:8080/；第一章位于 http://localhost:8080/lesson-01/。
 
-已部署至 **WorkBuddy Sites**，每次内容修改后说"更新线上"即可重新发布。
+若要让同一局域网中的设备访问，可运行 `python -m http.server 8080 --bind 0.0.0.0`，通过主机局域网 IP 与端口 8080 访问。
 
-## 🛠️ 技术栈
+## 发布
 
-- 零打包：纯 HTML + CSS + ES modules
-- 零依赖：D3.js v7 走 CDN（jsdelivr）
-- 单页静态站点：python http.server 默认启动方式
-- 课堂友好：讲解 / 代码 / 演示 三 tab 一键切换
+线上地址：https://favorites-zhaoy.github.io/hw4/
 
-## 🎯 设计原则
+源码仓库：https://github.com/Favorites-Zhaoy/hw4
 
-1. **案例为中心**：每个理论点都嵌入用户的实践案例
-2. **代码可运行**：每个 ⭐ 关键点都配有可点击运行的演示
-3. **讲解 ⇄ 代码 ⇄ 演示**：无缝切换，适合教师"一边讲、一边演"
-4. **零安装**：学生无需装任何东西，浏览器打开即用
+GitHub Pages 从 `main` 分支的根目录发布。推送到 `main` 后，由 GitHub 自动构建并更新网站；发布状态以仓库的 Pages 构建结果为准。
 
-## 📌 后续规划
+## 目录
 
-| 章节 | 状态 | 计划 |
-|---|---|---|
-| 第 1 章 · 数据 | ✅ 已上线 | — |
-| 第 2 章 · 数据可视化流程 | ⏳ 改造中 | 流程图 + rollup + 树布局 |
-| 第 3 章 · 低维数据可视化 | ⏳ 改造中 | 坐标变换 + 曲线 + 颜色 + 等值线 |
-| 第 4 章 · 时序数据可视化 | ⏳ 改造中 | 日历 + 螺旋 + Storyline |
+- `index.html`：首页学习入口、五章目标与原有知识介绍
+- `home-theme.css` / `home-theme.js`：教材主题与首页动效
+- `soft-book.js`：封面软翻页动画
+- `chapter-explorer.css` / `chapter-explorer.js`：章节目录与 SVG 预览
+- `i18n.js`：中英文切换
+- `lesson-01/` 至 `lesson-05/`：五章讲解、代码、演示与数据
+- `lesson-theme.css`：章节共用主题
+- `supplementary/`：补充演示
+
+桌面端悬停章节名称或用键盘聚焦可预览，点击章节名称直接进入讲解；触屏端点击同样直接进入章节。
+
+## 依赖与离线使用
+
+无需 npm 或构建工具。五章演示从 jsDelivr CDN 加载 D3.js v7（`https://cdn.jsdelivr.net/npm/d3@7/+esm`），仓库目前未提供本地 D3 备用文件。
+
+课程数据随各章的 `data/` 目录提供，需通过 HTTP 服务读取。本地托管页面不等于完整离线可用：断网时 D3.js 可能无法加载，交互演示不能保证运行。

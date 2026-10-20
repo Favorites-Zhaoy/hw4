@@ -11,6 +11,23 @@
 // ---------- 翻译字典 ----------
 const I18N = {
   'zh-CN': {
+    'portal.hero.facts': '5 个课程章节 · D3.js 实战 · 交互式案例',
+    'portal.hero.start': '开始学习：第 1 章',
+    'portal.hero.browse': '浏览课程章节',
+    'portal.hero.recommendation': '建议从数据类型与视觉编码开始，再进入图表实践。',
+    'portal.learning.goal': '学习目标',
+    'portal.learning.outcome': '实践成果',
+    'portal.learning.topics': '知识要点',
+    'card-01.goal': '理解数据类型与视觉通道，掌握数据整理和转换的基本方法。',
+    'card-01.outcome': '用 D3.js 加载新生 CSV，完成字段映射、分组与数据绑定。',
+    'card-02.goal': '理解数据、变换、映射与视图之间的关系，认识交互反馈。',
+    'card-02.outcome': '将新生数据按专业和班级组织为分类树，生成可交互的树形视图。',
+    'card-03.goal': '根据数据含义选择配色，理解颜色空间与色觉可访问性。',
+    'card-03.outcome': '生成图表配色，并用色觉缺陷模拟检查颜色是否容易区分。',
+    'card-04.goal': '理解坐标映射、曲线与等值线如何表达低维数据。',
+    'card-04.outcome': '用 Crime 数据比较坐标变换与曲线效果，探索等值线生成。',
+    'card-05.goal': '识别时间数据的趋势、周期和事件关系，选择合适的表达方式。',
+    'card-05.outcome': '探索法国人名折线图、日历热图与螺旋日历，比较不同时间视图。',
     // === 顶部导航 ===
     'nav.home': '课程门户',
     'nav.ch1': '第 1 章 · 数据',
@@ -110,7 +127,7 @@ const I18N = {
 
     // === Portal 主页 ===
     'portal.title': '《可视化导论》',
-    'footer.meta': '零依赖 · D3.js v7 · 部署于 WorkBuddy Sites',
+    'footer.meta': '静态课程网站 · D3.js v7 · 部署于 GitHub Pages',
 
     'footer.copyright': '© 2026 《可视化导论》课程 · 中国石油大学（华东）· 授课教师：<a href="https://cinger007.github.io" target="_blank" rel="noopener" class="teacher-link">李昕</a> · 主要参考教材：陈为《可视化导论》',
 
@@ -137,7 +154,7 @@ const I18N = {
     'portal.hero.h1': '《可视化导论》',
 
     'portal.tagline': '课程章节',
-    'portal.intro': '点击任一卡片进入该章节，每章节含 3 个 tab：📖 讲解 / ⌨️ 关键代码 / ▶️ 演示。',
+    'portal.intro': '点击章节名称进入学习；每章均提供 📖 讲解 / ⌨️ 关键代码 / ▶️ 演示。',
     'portal.section.usage': '使用方式',
     'portal.section.about': '关于本课程',
     'portal.usage.classroom.title': '课堂讲解',
@@ -147,15 +164,15 @@ const I18N = {
     'portal.usage.teacher.title': '教师备课时',
     'portal.usage.teacher.desc': '每个章节有 1 套独立的 demo/ 子目录，可以单独跑、单独改、单独打包给学生。',
     'portal.usage.lan.title': '局域网使用',
-    'portal.usage.lan.desc': '若公网不通，可在本机跑 python -m http.server 8080，学生连同一 WiFi 即可访问。',
+    'portal.usage.lan.desc': '在课程目录运行 python -m http.server 8080 --bind 0.0.0.0，同一 WiFi 下可通过主机 IP 访问；交互演示仍需联网加载 D3.js。',
     'portal.about.theory': '理论来源',
     'portal.about.theory.desc': '陈为《可视化导论》、Mackinlay 1986、Stevens 1946、Cleveland 1984、Bostock D3 官方文档、Card 1999 数据流模型。',
     'portal.about.principle': '设计原则',
     'portal.about.principle.desc': '案例为中心（不是理论为中心）。每个知识点都嵌入到用户的实践案例里，配 ⭐ 关键点解释 + 可运行演示。',
     'portal.about.stack': '技术栈',
-    'portal.about.stack.desc': '零依赖：纯 HTML + CSS + ES modules + D3.js v7 (CDN)。本地一条命令 python -m http.server 启动，无需 npm。',
+    'portal.about.stack.desc': '无需构建：纯 HTML + CSS + ES modules；交互演示通过 CDN 加载 D3.js v7。本地一条命令 python -m http.server 启动，无需 npm。',
     'portal.about.data': '数据集',
-    'portal.about.data.desc': '新生数据 CSV 与 Crime 数据等都已打包进 data/ 目录，浏览器 fetch 加载，离线可用。',
+    'portal.about.data.desc': '新生与 Crime 等数据随各章 data/ 目录提供，通过本地 HTTP 服务读取。交互演示依赖在线 D3.js，当前不支持完整离线使用。',
 
     // === 5 张卡片 ===
     'card-01.num': '第 1 章',
@@ -181,6 +198,23 @@ const I18N = {
   },
 
   'en-US': {
+    'portal.hero.facts': '5 chapters · Hands-on D3.js · Interactive examples',
+    'portal.hero.start': 'Start learning: Chapter 1',
+    'portal.hero.browse': 'Browse chapters',
+    'portal.hero.recommendation': 'Begin with data types and visual encoding, then explore chart practice.',
+    'portal.learning.goal': 'Learning goal',
+    'portal.learning.outcome': 'Practical outcome',
+    'portal.learning.topics': 'Key concepts',
+    'card-01.goal': 'Understand data types and visual channels; learn to organize and transform data.',
+    'card-01.outcome': 'Load student CSV data with D3.js, map fields, group records, and bind data.',
+    'card-02.goal': 'Connect data, transformation, mapping, and views, including interaction feedback.',
+    'card-02.outcome': 'Group student data by major and class to build an interactive tree view.',
+    'card-03.goal': 'Choose palettes that fit the data; understand color spaces and color accessibility.',
+    'card-03.outcome': 'Generate a chart palette and check distinguishability with color-vision simulations.',
+    'card-04.goal': 'Understand how coordinates, curves, and contours represent low-dimensional data.',
+    'card-04.outcome': 'Compare coordinate mappings and curves with Crime data, then explore contour generation.',
+    'card-05.goal': 'Recognize trends, cycles, and event relationships; choose suitable time views.',
+    'card-05.outcome': 'Explore French-name trends, calendar heatmaps, and spiral calendars to compare time views.',
     // === Top nav ===
     'nav.home': 'Course Portal',
     'nav.ch1': 'Ch 1 · Data',
@@ -280,7 +314,7 @@ const I18N = {
 
     // === Portal home ===
     'portal.title': 'Introduction to Visualization',
-    'footer.meta': 'Zero dependencies · D3.js v7 · Deployed on WorkBuddy Sites',
+    'footer.meta': 'Static course website · D3.js v7 · Hosted on GitHub Pages',
     'footer.copyright': '© 2026 Introduction to Visualization Course · China University of Petroleum (Huadong) · Instructor: <a href="https://cinger007.github.io" target="_blank" rel="noopener" class="teacher-link">Li Xin</a> · Main reference: Chen Wei’s 《Introduction to Visualization》',
     'portal.cards.color-bold': 'Color is the foundation of visualization',
     'portal.cards.source-prefix': 'Standalone topic:',
@@ -294,7 +328,7 @@ const I18N = {
     'portal.hero.h1': 'Introduction to Visualization',
     'portal.hero.tag': 'VISUALIZATION · INTRODUCTION',
     'portal.tagline': 'Course Chapters',
-    'portal.intro': 'Click any card to enter a chapter. Each chapter has 3 tabs: 📖 Explain / ⌨️ Key Code / ▶️ Demo.',
+    'portal.intro': 'Click a chapter title to start learning. Each chapter offers 📖 Explain / ⌨️ Key Code / ▶️ Demo.',
     'portal.section.usage': 'How to Use',
     'portal.section.about': 'About This Course',
     'portal.usage.classroom.title': 'Classroom Teaching',
@@ -304,15 +338,15 @@ const I18N = {
     'portal.usage.teacher.title': 'Teacher Preparation',
     'portal.usage.teacher.desc': 'Each chapter has its own demo/ subfolder. Run, modify, and package demos separately for students.',
     'portal.usage.lan.title': 'LAN Mode',
-    'portal.usage.lan.desc': 'If public web fails, run python -m http.server 8080 on your machine. Students on the same WiFi can access.',
+    'portal.usage.lan.desc': 'Run python -m http.server 8080 --bind 0.0.0.0 in the course folder and use the host IP on the same WiFi. Interactive demos still need Internet access to load D3.js.',
     'portal.about.theory': 'Theory Sources',
     'portal.about.theory.desc': "Chen Wei's 《Introduction to Visualization》, Mackinlay 1986, Stevens 1946, Cleveland 1984, Bostock D3 docs, Card 1999 data flow model.",
     'portal.about.principle': 'Design Principle',
     'portal.about.principle.desc': 'Case-centered (not theory-centered). Each concept is grounded in their hands-on cases, with ⭐ Key Code explanations + runnable demos.',
     'portal.about.stack': 'Tech Stack',
-    'portal.about.stack.desc': 'Zero dependencies: plain HTML + CSS + ES modules + D3.js v7 (CDN). One command python -m http.server. No npm needed.',
+    'portal.about.stack.desc': 'No build step: plain HTML + CSS + ES modules; interactive demos load D3.js v7 from a CDN. Run python -m http.server locally; no npm needed.',
     'portal.about.data': 'Datasets',
-    'portal.about.data.desc': 'Student CSV + Crime CSV etc. all packaged in data/. Loaded via fetch, works offline.',
+    'portal.about.data.desc': 'Student and Crime datasets are included in each chapter’s data/ folder and served over local HTTP. Interactive demos depend on online D3.js; full offline use is not currently supported.',
 
     // === Supplementary index ===
     'common.back': '← Back to Course Portal',

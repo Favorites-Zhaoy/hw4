@@ -29,7 +29,13 @@
 .chapter-explorer .card-num { font-size: 10px; letter-spacing: 1.3px; margin-bottom: 9px; }
 .chapter-explorer .card h3 { font-size: 25px; margin-bottom: 10px; letter-spacing: -.5px; }
 .chapter-explorer .card-source { font-size: 10px; margin-bottom: 13px; }
-.chapter-explorer .card-desc { font-size: 13px; line-height: 1.85; margin-bottom: 17px; }
+.chapter-learning { display: grid; gap: 12px; margin: 6px 0 21px; padding: 16px 18px; background: #f0f3e2; border-left: 2px solid #91a56a; }
+.chapter-learning > div { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 12px; align-items: baseline; }
+.chapter-learning dt { color: #5b7048; font-size: 11px; font-weight: 600; line-height: 1.85; }
+.chapter-learning dd { margin: 0; color: var(--ink); font-size: 13px; line-height: 1.85; }
+.chapter-topics-label { margin: 0 0 6px; color: #6e7d5d; font-size: 10px; letter-spacing: 1px; }
+.chapter-explorer .card-desc { font-size: 12px; line-height: 1.85; color: #62705c; margin-bottom: 13px; }
+html[lang=en] .chapter-learning > div { grid-template-columns: 100px minmax(0,1fr); }
 .chapter-explorer .card-tags { margin: 0 0 17px; padding: 0; }
 .chapter-explorer .card-tags li { font-size: 10px; background: #eef1e0; padding: 3px 8px; }
 .chapter-explorer .card .card-status { top: 25px; right: 30px !important; }
@@ -65,6 +71,9 @@
   .chapter-art { padding: 35px 12px 5px; }.chapter-art svg { height: 190px; }
   .chapter-explorer a.card { padding: 23px; }.chapter-explorer .card h3 { font-size: 23px; }
   .chapter-explorer .card-desc { font-size: 12px; }.chapter-explorer .card .card-status { top: 22px; right: 20px !important; }
+  .chapter-learning { padding: 14px; gap: 14px; }
+  .chapter-learning > div, html[lang=en] .chapter-learning > div { grid-template-columns: 1fr; gap: 3px; }
+  .chapter-learning dd { font-size: 12px; }
 }
 @media (max-width: 420px) { .chapter-art svg { height: 155px; }.chapter-art { padding-inline: 2px; }.chapter-tab-title { font-size: 11px; }.chapter-tab { padding-inline: 6px; }.chapter-explorer a.card { padding: 21px; } }
 @media (prefers-reduced-motion: reduce) { .chapter-explorer *, .chapter-explorer *::before, .chapter-explorer *::after { animation: none !important; transition: none !important; } }
