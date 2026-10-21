@@ -23,30 +23,8 @@
 .map-swatches { display: flex; margin-top: 15px; gap: 5px; }
 .map-swatches i { width: 23px; height: 8px; background: #264e3e; }.map-swatches i:nth-child(2) { background: #73955a; }.map-swatches i:nth-child(3) { background: #b6cc78; }.map-swatches i:nth-child(4) { background: #d4dabc; }
 .learning-footnote { margin-top: 12px; color: #708063; font-size: 11px; line-height: 1.8; }
-.lab-shell, .progress-shell { border: 1px solid var(--line); background: #fffef8; }
-.lab-controls { display: flex; flex-wrap: wrap; gap: 22px; padding: 24px 28px; border-bottom: 1px solid var(--line); background: #edf1dc; }
-.lab-field-controls { display: flex; flex-wrap: wrap; gap: 22px; }.lab-field-controls[hidden] { display: none; }
-.lab-controls label { display: grid; gap: 8px; color: #627650; font-size: 11px; }
-.lab-controls select { min-width: 150px; max-width: 100%; border: 1px solid #c3cfae; border-radius: 2px; padding: 9px 30px 9px 12px; color: var(--ink); background: #fffef8; font-family: inherit; font-size: 13px; line-height: 1.5; }
-.lab-controls select:focus-visible { outline: 2px solid #537843; outline-offset: 3px; }
-.lab-view { min-height: 320px; padding: 22px 28px 18px; }
-#lab-status { color: #637358; font-size: 12px; margin: 0 0 12px; }
-#lab-chart { position: relative; }
-#lab-chart svg { width: 100%; height: auto; display: block; overflow: visible; }
-.lab-axis { color: #869578; font: 11px 'Microsoft YaHei',sans-serif; }.lab-axis .domain { stroke: #bbc7aa; }.lab-axis line { stroke: #e5eadb; }
-.lab-axis-label { font: 12px 'Microsoft YaHei',sans-serif; fill: #526645; }
-.lab-dot { fill: #3d6b4e; fill-opacity: .64; stroke: #fffef8; stroke-width: 1; }.lab-dot:hover { fill: #123e37; fill-opacity: 1; stroke: #a2bd61; stroke-width: 3; }
-.lab-bar { fill: #719350; }.lab-bar:hover { fill: #315b3b; }
-.lab-bar-value { font: 11px Consolas,monospace; fill: #3a593c; }
-.lab-insight { font-size: 12px; color: #53684a; line-height: 1.9; margin: 12px 0 0; padding: 12px 15px; background: #f0f3e4; }
-.lab-insight:empty { display: none; }
-.lab-bottom { padding: 18px 28px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
-.lab-bottom details { min-width: 0; flex: 1; }.lab-bottom summary { color: var(--ink); font-size: 12px; cursor: pointer; }
-.lab-bottom > a { color: var(--ink); font-size: 11px; max-width: 40%; line-height: 1.8; }
-.lab-table-scroll { overflow: auto; max-height: 320px; margin-top: 14px; }
-.lab-table-scroll table { width: 100%; border-collapse: collapse; font-size: 11px; text-align: left; color: var(--ink-soft); }
-.lab-table-scroll caption { text-align: left; font-size: 11px; margin-bottom: 8px; }.lab-table-scroll th, .lab-table-scroll td { padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }.lab-table-scroll th { background: #edf1dd; }
-#lab-retry, .progress-footer button { font: inherit; font-size: 11px; color: var(--ink); background: transparent; border: 1px solid #becba7; padding: 8px 12px; cursor: pointer; }
+.progress-shell { border: 1px solid var(--line); background: #fffef8; }
+.progress-footer button { font: inherit; font-size: 11px; color: var(--ink); background: transparent; border: 1px solid #becba7; padding: 8px 12px; cursor: pointer; }
 .progress-summary { display: flex; align-items: center; justify-content: space-between; padding: 28px; gap: 24px; }
 #progress-count { color: #6d824f; font: 12px/1.6 Consolas,'Microsoft YaHei',monospace; margin-bottom: 12px; }
 #progress-title { font-size: 20px; color: var(--ink); margin: 0 0 10px; line-height: 1.6; }
@@ -65,8 +43,6 @@
   .map-node { padding: 17px 14px; }.map-node h3 { font-size: 14px; }.map-number { font-size: 22px; }.map-node-arrow { font-size: 15px; }
   .map-applications { grid-template-columns: 1fr; gap: 22px; }.map-use-cases { padding-left: 18px; }.map-use-cases::before { left: 0; top: 0; bottom: 50%; width: 17px; }.map-use-cases::after { left: 0; top: 50%; width: 17px; }
   .map-stage-label { font-size: 10px; }.learning-footnote { font-size: 10px; }
-  .lab-controls { padding: 20px; gap: 16px; }.lab-field-controls { width: 100%; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }.lab-controls select { width: 100%; min-width: 0; font-size: 12px; }.lab-controls > label { width: 100%; }
-  .lab-view { padding: 20px 12px 14px; min-height: 260px; }.lab-insight { font-size: 11px; padding: 10px; }.lab-bottom { padding: 17px 20px; flex-direction: column; }.lab-bottom > a { max-width: 100%; }.lab-bottom details { width: 100%; }
   .progress-summary { padding: 22px; flex-direction: column; align-items: flex-start; gap: 18px; }#progress-title { font-size: 17px; }.progress-chapters { grid-template-columns: 1fr; }.progress-chapters a { display: grid; grid-template-columns: 28px 1fr 65px; align-items: center; border-right: 0; border-bottom: 1px solid var(--line); padding: 14px 22px; }.progress-chapters a:last-child { border-bottom: 0; }.progress-chapters a[data-last=true] { box-shadow: inset 3px 0 #7d985b; }.progress-number { font-size: 18px; }.progress-footer { padding: 17px 22px; flex-direction: column; align-items: flex-start; gap: 12px; }
   .book-stage { height: 295px; margin-top: 18px; margin-bottom: 40px; }.book-entrance { width: 185px; }.book-orbit { width: 260px; }.hero-inner { padding-top: 32px; }.hero-tag { margin-bottom: 18px; }
   .site-masthead .nav { gap: 11px; }.site-masthead .nav a { font-size: 10px; }

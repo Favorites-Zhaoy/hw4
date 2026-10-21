@@ -60,7 +60,6 @@
 
   <nav class="nav" data-page-node-id="46pjaYk1anKFk8sx1CpUfx">
     <a href="#chapters" data-page-node-id="TIDjB8RVxmO2SVmR0lKHSD" data-i18n="portal.nav.chapters">📚 章节</a>
-    <a href="#lab" data-i18n="learning.nav.lab">交互实验</a>
     <a href="#howto" data-page-node-id="WAU2lzRUXXisfyKqLQxwYt" data-i18n="portal.nav.howto">▶️ 使用方式</a>
     <a href="#about" data-page-node-id="jGREv0ddub0C7xuTllzbaI" data-i18n="portal.nav.about">ℹ️ 关于</a>
   </nav>
@@ -189,29 +188,8 @@
       </div>
     </section>
 
-    <section id="lab" class="section learning-lab">
-      <p class="learning-kicker">02 / TRY IT YOURSELF</p><h2 data-i18n="learning.lab.title">数据可视化实验室</h2>
-      <p class="section-lead" data-i18n="learning.lab.intro">同一份新生数据，换一个字段或图表，看看你能读出什么。数据来自第 1 章的 DeepSeek 合成样本，仅用于教学。</p>
-      <div class="lab-shell">
-        <div class="lab-controls">
-          <label><span data-i18n="learning.lab.type">图表类型</span><select id="lab-type"><option value="scatter" data-i18n="learning.lab.scatter">散点图</option><option value="bar" data-i18n="learning.lab.bar">柱状图</option></select></label>
-          <div id="lab-scatter-controls" class="lab-field-controls">
-            <label><span data-i18n="learning.lab.x">横轴字段</span><select id="lab-x"><option value="id" data-i18n="learning.lab.id">记录序号</option><option value="month" data-i18n="learning.lab.month">出生月份</option><option value="age" data-i18n="learning.lab.age">年龄</option></select></label>
-            <label><span data-i18n="learning.lab.y">纵轴字段</span><select id="lab-y"><option value="age" data-i18n="learning.lab.age">年龄</option><option value="month" data-i18n="learning.lab.month">出生月份</option><option value="id" data-i18n="learning.lab.id">记录序号</option></select></label>
-          </div>
-          <div id="lab-bar-controls" class="lab-field-controls" hidden>
-            <label><span data-i18n="learning.lab.group">分组字段</span><select id="lab-group"><option value="class" data-i18n="learning.lab.class">班级</option><option value="gender" data-i18n="learning.lab.gender">性别</option><option value="age" data-i18n="learning.lab.age">年龄</option></select></label>
-            <label><span data-i18n="learning.lab.measure">统计方式</span><select id="lab-measure"><option value="count" data-i18n="learning.lab.count">记录数量</option><option value="mean" data-i18n="learning.lab.mean">平均年龄</option></select></label>
-          </div>
-        </div>
-        <div class="lab-view"><p id="lab-status" role="status" aria-live="polite" data-i18n="learning.lab.loading">滚动到此处后加载交互图表…</p><button id="lab-retry" type="button" hidden data-i18n="learning.lab.retry">重新加载</button><div id="lab-chart"></div><p id="lab-insight" class="lab-insight"></p></div>
-        <div class="lab-bottom"><details id="lab-table"><summary data-i18n="learning.lab.table">查看图表数据</summary><div class="lab-table-scroll" tabindex="0"><table><caption id="lab-table-caption"></caption><thead></thead><tbody></tbody></table></div></details><a href="lesson-01/" data-i18n="learning.lab.lesson">进入第 1 章，了解数据如何整理 →</a></div>
-      </div>
-      <noscript><p>此实验需要 JavaScript。可直接进入<a href="lesson-01/">第 1 章</a>阅读讲解。</p></noscript>
-    </section>
-
     <section id="learning-progress" class="section learning-progress">
-      <p class="learning-kicker">03 / YOUR LEARNING</p><h2 data-i18n="learning.progress.title">接着上次，继续探索</h2>
+      <p class="learning-kicker">02 / YOUR LEARNING</p><h2 data-i18n="learning.progress.title">接着上次，继续探索</h2>
       <div class="progress-shell"><div class="progress-summary"><div><p id="progress-count"></p><h3 id="progress-title" data-i18n="learning.progress.empty">还没有访问记录，从第一章开始吧。</h3><p id="progress-detail"></p></div><a id="progress-resume" href="lesson-01/" class="progress-resume" data-i18n="learning.progress.start">开始第一章 ↗</a></div><div id="progress-chapters" class="progress-chapters"></div><div class="progress-footer"><p data-i18n="learning.progress.note">仅记录本浏览器的章节访问和上次阅读位置，不代表学习完成；不会上传或跨设备同步。</p><button id="progress-clear" type="button" hidden data-i18n="learning.progress.clear">清除访问记录</button></div></div>
       <noscript><p>启用 JavaScript 后可在当前浏览器保存访问记录。</p></noscript>
     </section>

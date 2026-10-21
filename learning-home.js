@@ -1,5 +1,4 @@
 import { readVisits, STORAGE_KEY } from './learning-progress.js';
-import { initLab } from './learning-lab.js';
 
 const copy = (zh, en) => document.documentElement.lang === 'en' ? en : zh;
 const titles = [['数据', 'Data'], ['数据可视化流程', 'Visualization Workflow'], ['色彩专题', 'Color'], ['低维数据可视化', 'Low-Dimensional Data'], ['时序数据可视化', 'Time Series Data']];
@@ -63,4 +62,3 @@ window.addEventListener('pageshow', showVisits);
 window.addEventListener('storage', event => { if (event.key === STORAGE_KEY || event.key === null) showVisits(); });
 document.addEventListener('wbl:localechange', showVisits);
 showVisits();
-initLab();
