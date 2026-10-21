@@ -11,7 +11,7 @@ import { renderDemo as safeRenderDemo } from "../teaching-viz/render-demo.js";
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { createSpiralGeometry, loadWeather, loadNames, STORY_DATA } from "../teaching-viz/models-05.js";
 import { registerLinkedLessons } from "../teaching-viz/linked-learning.js?v=20261021-ch5";
-import { chapter05 } from "../teaching-viz/chapter-05.js?v=20261021-ch5";
+import { chapter05 } from "../teaching-viz/chapter-05.js?v=20261021-ch5-r2";
 import { registerChapter05Guides } from "../teaching-viz/chapter-05-guides.js";
 
 window.DEMOS = window.DEMOS || {};

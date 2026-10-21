@@ -170,7 +170,9 @@ export function storyDefinition(d3) {
         if (layer !== 'roles') data().events.forEach((event, i) => {
           const group = svg('g', { 'data-story-event': i });
           group.append(svg('circle', { cx: x(event.time), cy: y(event.y), r: i === eventIndex ? 24 : 18, fill: '#dc262633', stroke: i === eventIndex ? '#b52a2a' : '#d88e8e', 'stroke-width': 3 }), svg('circle', { cx: x(event.time), cy: y(event.y), r: 4, fill: '#b52a2a' }));
-          const label = svg('text', { x: x(event.time), y: y(event.y) - 30, 'text-anchor': 'middle', style: 'fill:#a12424;font-size:20px' }, event.name);
+          const labelY = i % 2 ? Math.min(395, y(event.y) + 64) : Math.max(55, y(event.y) - 64);
+          group.append(svg('line', { x1:x(event.time), x2:x(event.time), y1:y(event.y)+(i%2?24:-24), y2:labelY+(i%2?-18:8), stroke:'#b52a2a', 'stroke-width':1.5, 'stroke-dasharray':'4 3' }));
+          const label = svg('text', { x: x(event.time), y:labelY, 'text-anchor': 'middle', 'data-event-label':i, style:'fill:#a12424;font-size:24px;paint-order:stroke;stroke:#fffef8;stroke-width:5px;stroke-linejoin:round' }, event.name);
           group.append(label); interactive(group, event.name, () => { eventIndex = i; eventSelect.value = i; selectStep('events'); }); chart.append(group);
         });
         result.append(el('h4', {}, frame.event.name), el('p', {}, t(frame.event.desc, frame.event.descEn ?? frame.event.desc)));
