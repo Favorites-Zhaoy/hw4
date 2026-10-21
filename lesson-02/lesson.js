@@ -1,7 +1,11 @@
+import { renderDemo as safeRenderDemo } from "../teaching-viz/render-demo.js";
 // lesson.js —— Doc-02 集成教学页面交互逻辑
 // 1) 章节切换  2) Tab 切换  3) 4 个 Demo 注入
 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import { loadStudents as sharedLoadStudents } from "../teaching-viz/models-02.js";
+import { registerLinkedLessons } from "../teaching-viz/linked-learning.js";
+import { chapter02 } from "../teaching-viz/chapter-02.js";
 
 window.DEMOS = window.DEMOS || {};
 
@@ -10,21 +14,7 @@ window.DEMOS = window.DEMOS || {};
 // 数据加载辅助函数（修复 loadStudents 未定义 bug · 2026-09-09）
 // =============================================================
 async function loadStudents() {
-  return await d3.csv("./data/newstudent.csv", d => {
-    const cls = d["班级"].trim();
-    return {
-      id:       +d["序号"],
-      name:     d["姓名"].trim(),
-      gender:   d["性别"].trim(),
-      birthday: d["生日"].trim(),
-      age:      +d["年龄"],
-      class:    cls,
-      hometown: d["籍贯"].trim(),
-      nation:   d["民族"].trim(),
-      // 从班级提取专业（"软件工程1班" → "软件工程"），用于 d-4-2/4-3/4-4 rollup 分组
-      major:    cls.replace(/[\d班]+$/, "").trim(),
-    };
-  });
+  return sharedLoadStudents(d3);
 }
 
 
@@ -37,11 +27,11 @@ function __resolveDemoName(mount) {
       || null;
 }
 function __renderDemo(mount) {
-  if (!mount || mount.dataset.rendered) return;
+  if (!mount || mount.dataset.rendered || mount.dataset.rendering) return;
   const name = __resolveDemoName(mount);
   if (!name) return;
   const fn = (window.DEMOS && window.DEMOS[name]) || (typeof DEMOS !== "undefined" && DEMOS[name]);
-  if (fn) { fn(mount); mount.dataset.rendered = "1"; }
+  safeRenderDemo(mount, fn);
 }
 function __renderAllDemos() {
   document.querySelectorAll(".demo-mount, [id^='demo-mount-']").forEach(__renderDemo);
@@ -528,3 +518,6 @@ document.addEventListener("DOMContentLoaded", () => {
     firstMount.dataset.rendered = "1";
   }
 });
+
+// Optional teaching view; original demonstrations and tab order stay in place.
+registerLinkedLessons(d3, chapter02(d3));
