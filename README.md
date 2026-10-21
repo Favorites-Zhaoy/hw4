@@ -48,3 +48,11 @@ GitHub Pages 从 `main` 分支的根目录发布。推送到 `main` 后，由 Gi
 - 只有“继续上次学习”链接（`?resume=1`）会恢复位置。普通章节入口仍正常进入，且学习记录不依赖 D3 网络加载成功。
 
 验证命令：`node --test tests/learning.test.mjs`（使用 Node 内置测试，无需安装依赖）。
+
+## 章节图解联动（本地教学增强分支）
+
+五章 27 小节均可从 **关键代码 → 开启图解联动** 进入。左侧保留原代码，右侧展示同一数据的输入、转换与结果；选择步骤或图元可定位代码。支持上一步/下一步、重置、放大图形、关闭动态效果和返回原完整演示。关闭后原代码恢复原位。小屏幕按顺序排列代码与图形。
+
+`teaching-viz/linked-learning.js` 管理生命周期，`chapter-01.js` 至 `chapter-05.js` 提供各章图形，`models-*.js` 提供可测试的同源计算。没有新增前端框架、媒体或远程依赖；首页保持原样。
+
+运行 `node --test tests/*.test.mjs` 和 `python -B docs/verify-knowledge-preservation.py` 检查计算与内容保护。浏览器验收、资源增量、教师待确认问题和回滚方式见 [交付报告](docs/teaching-viz-release-report.md)。4.5 原 Marching Squares 边表尚需教师确认；新增运行代码超过建议体积目标，不能把本分支视为全部验收通过或已上线。
