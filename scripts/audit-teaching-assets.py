@@ -43,6 +43,8 @@ for file in ROOT.rglob("*"):
     if not file.is_file() or any(part in {".git", "node_modules", "__pycache__"} for part in file.relative_to(ROOT).parts):
         continue
     rel = file.relative_to(ROOT).as_posix()
+    if file.resolve() == OUTPUT.resolve():
+        continue
     # Reports cannot include their own changing byte totals.
     if rel in {"docs/teaching-viz-resource-diff.json", "docs/teaching-viz-resource-diff.md"}:
         continue

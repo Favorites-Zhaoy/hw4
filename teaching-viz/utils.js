@@ -30,7 +30,7 @@ export function button(root, label, fn, signal) {
 }
 export function selectControl(root, label, options, value, onChange, signal) {
   const field = el('label', { className: 'tv-field' }); field.append(el('span', {}, label));
-  const node = el('select');
+  const node = el('select', { 'aria-label':label });
   options.forEach(option => {
     const [v, text] = Array.isArray(option) ? option : [option, option];
     node.append(el('option', { value: v }, text));

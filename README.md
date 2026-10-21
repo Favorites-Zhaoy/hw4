@@ -56,3 +56,5 @@ GitHub Pages 从 `main` 分支的根目录发布。推送到 `main` 后，由 Gi
 `teaching-viz/linked-learning.js` 管理生命周期，`chapter-01.js` 至 `chapter-05.js` 提供各章图形，`models-*.js` 提供可测试的同源计算。没有新增前端框架、媒体或远程依赖；首页保持原样。
 
 运行 `node --test tests/*.test.mjs` 和 `python -B docs/verify-knowledge-preservation.py` 检查计算与内容保护。当前入口变更与发布范围见 [映射标签记录](docs/mapping-tab-release.md)；首轮浏览器验收、资源增量、教师待确认问题和回滚方式见 [交付报告](docs/teaching-viz-release-report.md)。4.5 原 Marching Squares 边表尚需教师确认；新增运行代码超过建议体积目标，不代表所有验收项目均通过。
+
+第五章新增案例探究、可直接定位步骤的课堂任务和[案例讲解手册](lesson-05/casebook.md)。时间属性、折线、日历、螺旋和Storyline的映射均按阶段构建；新增校园日程/小组协作与14天周期比较均明确为构造微例。原讲义与数据保留，具体对应检查与桌面验收见[第五章精修报告](docs/chapter05-refinement-report.md)。

@@ -3,12 +3,12 @@
   "branch": "codex/linked-teaching-27",
   "baseline": "477706e3223ef43e66c79fd10f7abcd00d81a546",
   "nodeTests": {
-    "pass": 43,
+    "pass": 65,
     "fail": 0,
     "skip": 0
   },
   "javascriptSyntax": {
-    "files": 20,
+    "files": 24,
     "status": "PASS"
   },
   "knowledgeProtection": {
@@ -29,5 +29,12 @@
     "sections": 27,
     "representativeViewportCases": 15,
     "report": "mapping-tab-release.md"
+  },
+  "chapter05Refinement": {
+    "baseline": "bb06feef99ce25cb8cee8c82826beb3f02cd4c80",
+    "desktopStepCases": 75,
+    "distinctVisualStages": 25,
+    "guideRoutes": 15,
+    "report": "chapter05-refinement-report.md"
   }
 }

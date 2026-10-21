@@ -49,14 +49,14 @@ export function createLinkedLesson(article, definition, d3) {
   const explain = el('p', { className: 'tv-explain', 'aria-live': 'polite' });
   const controls = el('div', { className: 'tv-actions' });
   const position = el('span', { className: 'tv-position' });
-  let active = false, scene = null, aborter = null, version = 0;
+  let active = false, scene = null, aborter = null, version = 0, feedback = null, revealFrame = 0;
   let stepEvents = new AbortController();
   const placeholders = new Map();
   left.append(steps, codeView); workspace.append(left, figure);
   body.append(title, goal, workspace, source, explain, controls); host.append(body); panel.replaceChildren(host);
-  const previous = button(controls, '', () => { state.previous(); render(); }, lifetime.signal);
+  const previous = button(controls, '', () => { state.previous(); render(); revealFigure(); }, lifetime.signal);
   controls.append(position);
-  const next = button(controls, '', () => { state.next(); render(); }, lifetime.signal);
+  const next = button(controls, '', () => { state.next(); render(); revealFigure(); }, lifetime.signal);
   const resetButton = button(controls, '', () => { state.reset(); scene?.reset?.(); render(); }, lifetime.signal);
   const zoomButton = button(controls, '', () => {
     const zoomed = host.classList.toggle('tv-zoom');
@@ -64,12 +64,16 @@ export function createLinkedLesson(article, definition, d3) {
   }, lifetime.signal);
   zoomButton.className = 'tv-zoom-toggle'; host.prepend(zoomButton);
   const motionLabel = el('label', { className: 'tv-motion' });
-  const motion = el('input', { type: 'checkbox' }); motion.checked = true;
+  const motion = el('input', { type: 'checkbox' }); motion.checked = definition.motionByDefault !== true;
   const motionText = el('span'); motionLabel.append(motion, motionText); controls.append(motionLabel);
   const full = button(controls, '', () => { hide(); article.querySelector('.tab-btn[data-tab="demo"]')?.click(); }, lifetime.signal);
   const closeButton = button(controls, '', () => {
     hide(); const codeTab = article.querySelector('.tab-btn[data-tab="code"]'); codeTab?.click(); codeTab?.focus();
   }, lifetime.signal);
+  const mobileStep = el('label', { className:'tv-mobile-step' });
+  const mobileStepLabel = el('span');
+  const mobileStepSelect = el('select'); mobileStep.append(mobileStepLabel, mobileStepSelect);
+  mobileStepSelect.addEventListener('change', () => selectStep(mobileStepSelect.value), { signal:lifetime.signal });
 
   function labels() {
     stepEvents.abort(); stepEvents = new AbortController();
@@ -82,12 +86,16 @@ export function createLinkedLesson(article, definition, d3) {
     zoomButton.hidden = !active;
     zoomButton.setAttribute('aria-pressed', String(host.classList.contains('tv-zoom')));
     motionText.textContent = t('关闭动态效果', 'Disable motion');
+    mobileStepLabel.textContent = t('图解步骤', 'Diagram step');
+    mobileStepSelect.setAttribute('aria-label', mobileStepLabel.textContent);
+    mobileStepSelect.replaceChildren();
     steps.replaceChildren();
     definition.steps.forEach((step, index) => {
       const targets = step.codeTargets ?? [];
       const lineLabel = targets.map(target => `${target.block + 1}:${target.from}${target.to > target.from ? `–${target.to}` : ''}`).join(', ');
       const label = word(step.label).replace(/^[①②③④⑤⑥⑦⑧⑨⑩]\s*/, '');
-      const node = button(steps, `${index + 1}. ${label}${lineLabel ? ` [${lineLabel}]` : ''}`, () => selectStep(step.id), stepEvents.signal);
+      const node = button(steps, `${index + 1}. ${label}${lineLabel ? ` [${lineLabel}]` : ''}`, () => selectStep(step.id, true), stepEvents.signal);
+      mobileStepSelect.append(el('option', { value:step.id }, `${index + 1}. ${label}`));
       node.dataset.step = step.id;
     });
   }
@@ -114,6 +122,7 @@ export function createLinkedLesson(article, definition, d3) {
   function render() {
     if (!active || !scene) return;
     const step = definition.steps[state.index];
+    mobileStepSelect.value = step.id;
     steps.querySelectorAll('button').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.step === step.id)));
     codeView.querySelectorAll('.tv-code-line').forEach(node => node.classList.remove('tv-line-active'));
     for (const target of step.codeTargets ?? []) {
@@ -126,10 +135,21 @@ export function createLinkedLesson(article, definition, d3) {
     position.textContent = `${state.index + 1} / ${definition.steps.length}`;
     previous.disabled = state.index === 0; next.disabled = state.index === definition.steps.length - 1;
     explain.textContent = word(step.explain);
-    try { scene.focus(step.id); }
+    try {
+      scene.focus(step.id);
+      feedback?.cancel();
+      if (definition.stepFeedback && !motion.checked && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        feedback = figure.animate([{ opacity:.55, transform:'translateY(5px)' },{ opacity:1, transform:'translateY(0)' }], { duration:220, easing:'ease-out' });
+      }
+    }
     catch (error) { showError(error); }
   }
-  function selectStep(id) { state.select(id); render(); }
+  function revealFigure() {
+    if (!definition.stepFeedback || host.getBoundingClientRect().width >= 780) return;
+    cancelAnimationFrame(revealFrame);
+    revealFrame = requestAnimationFrame(() => { if (active) figure.scrollIntoView({ behavior:'instant', block:'start' }); });
+  }
+  function selectStep(id, reveal = false) { state.select(id); render(); if (reveal) revealFigure(); }
   function setStatus(text) { if (active) explain.textContent = text; }
   function showError(error) {
     aborter?.abort(); scene?.destroy?.(); scene = null;
@@ -146,7 +166,7 @@ export function createLinkedLesson(article, definition, d3) {
     body.hidden = false; labels(); attachCode();
     const renderMount = el('div', { className: 'tv-scene' });
     renderMount.append(el('p', { role: 'status' }, t('正在读取本节教学数据…', 'Loading this section’s data…')));
-    figure.replaceChildren(renderMount);
+    figure.replaceChildren(...(definition.stepFeedback ? [mobileStep,renderMount] : [renderMount]));
     steps.querySelectorAll('button').forEach(node => { node.disabled = true; });
     previous.disabled = next.disabled = resetButton.disabled = true;
     try {
@@ -163,11 +183,11 @@ export function createLinkedLesson(article, definition, d3) {
   }
   function hide() {
     if (!active) return;
-    active = false; ++version; aborter?.abort(); scene?.destroy?.(); scene = null;
+    active = false; ++version; cancelAnimationFrame(revealFrame); feedback?.cancel(); aborter?.abort(); scene?.destroy?.(); scene = null;
     figure.replaceChildren(); detachCode(); body.hidden = true; labels();
   }
   motion.addEventListener('change', () => {
-    if (motion.checked && active && scene) { d3.select(figure).selectAll('*').interrupt(); render(); }
+    if (motion.checked && active && scene) { feedback?.cancel(); d3.select(figure).selectAll('*').interrupt(); render(); }
   }, { signal: lifetime.signal });
   steps.addEventListener('keydown', event => {
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {

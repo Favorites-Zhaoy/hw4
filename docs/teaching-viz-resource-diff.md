@@ -4,32 +4,41 @@
 
 | 范围 | 基线字节 | 当前字节 | 净增字节 | 净增KiB |
 |---|---:|---:|---:|---:|
-| 全部JS/MJS/CSS（含测试） | 436,184 | 661,216 | 225,032 | 219.758 |
-| 运行时JS/MJS/CSS（不含tests/docs/scripts） | 434,468 | 628,223 | 193,755 | 189.214 |
+| 全部JS/MJS/CSS（含测试） | 436,184 | 752,011 | 315,827 | 308.425 |
+| 运行时JS/MJS/CSS（不含tests/docs/scripts） | 434,468 | 701,350 | 266,882 | 260.627 |
 
-目标160KiB = 163,840B。当前运行时超出 29,915B；含测试超出 61,192B。状态：**OVER_TARGET**。
-旧工作树中既有CRLF与Git对象LF存在差异；统一换行后净增：全部代码223,113B，运行时代码191,836B，仍超目标，不能靠换行口径宣称达标。
+目标160KiB = 163,840B。当前运行时超出 103,042B；含测试超出 151,987B。状态：**OVER_TARGET**。
+旧工作树中既有CRLF与Git对象LF存在差异；统一换行后净增：全部代码313,655B，运行时代码264,710B，仍超目标。
 
 ## 新增运行时文件
 
 | 文件 | 当前字节 |
 |---|---:|
 | `teaching-viz/chapter-02.js` | 33,713 |
-| `teaching-viz/chapter-05.js` | 32,411 |
+| `teaching-viz/chapter-05-names-calendar.js` | 32,891 |
 | `teaching-viz/chapter-01.js` | 30,161 |
 | `teaching-viz/chapter-04.js` | 26,591 |
 | `teaching-viz/chapter-03.js` | 20,295 |
+| `teaching-viz/chapter-05-spiral.js` | 18,917 |
+| `teaching-viz/chapter-05-story.js` | 18,629 |
+| `teaching-viz/linked-learning.js` | 14,149 |
 | `teaching-viz/chapter-03-extra.js` | 13,303 |
-| `teaching-viz/linked-learning.js` | 12,632 |
+| `teaching-viz/chapter-05-attributes.js` | 11,923 |
+| `teaching-viz/chapter-05-guides.js` | 9,667 |
 | `teaching-viz/linked-learning.css` | 5,156 |
 | `teaching-viz/models-04.js` | 4,912 |
+| `teaching-viz/chapter-05-spiral-model.js` | 4,031 |
 | `teaching-viz/models-01.js` | 3,431 |
 | `teaching-viz/models-05.js` | 3,386 |
-| `teaching-viz/utils.js` | 2,534 |
+| `teaching-viz/models-05-story.js` | 2,691 |
+| `teaching-viz/utils.js` | 2,558 |
+| `teaching-viz/chapter-05.css` | 2,422 |
 | `teaching-viz/models-03.js` | 2,395 |
+| `teaching-viz/models-05-names-calendar.js` | 2,104 |
 | `teaching-viz/models-02.js` | 1,962 |
 | `teaching-viz/fallback.js` | 1,585 |
 | `teaching-viz/render-demo.js` | 1,015 |
+| `teaching-viz/chapter-05.js` | 497 |
 
 ## 已排除的资源增长风险
 

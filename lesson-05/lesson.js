@@ -10,8 +10,9 @@ import { renderDemo as safeRenderDemo } from "../teaching-viz/render-demo.js";
 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { createSpiralGeometry, loadWeather, loadNames, STORY_DATA } from "../teaching-viz/models-05.js";
-import { registerLinkedLessons } from "../teaching-viz/linked-learning.js";
-import { chapter05 } from "../teaching-viz/chapter-05.js";
+import { registerLinkedLessons } from "../teaching-viz/linked-learning.js?v=20261021-ch5";
+import { chapter05 } from "../teaching-viz/chapter-05.js?v=20261021-ch5";
+import { registerChapter05Guides } from "../teaching-viz/chapter-05-guides.js";
 
 window.DEMOS = window.DEMOS || {};
 
@@ -50,7 +51,7 @@ function __activateChapter(id) {
       const mount = c.querySelector(".demo-mount, [id^='demo-mount-']");
       __renderDemo(mount);
       setTimeout(() => {
-        if (mount) mount.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (mount && c.classList.contains("active") && c.querySelector('.tab-btn[data-tab="demo"].active')) mount.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 80);
     }
   });
@@ -667,4 +668,4 @@ window.DEMOS["d-5-5"] = async function (mount) {
   render();
 };
 
-registerLinkedLessons(d3, chapter05(d3));
+registerChapter05Guides(registerLinkedLessons(d3, chapter05(d3)));
