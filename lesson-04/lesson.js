@@ -1,3 +1,4 @@
+import { renderDemo as safeRenderDemo } from "../teaching-viz/render-demo.js";
 // Doc-04 低维数据可视化 · 集成教学页面 · 5 个 demo
 // =========================================
 //   4.1 数据转换       → d-4-1 crime-loader
@@ -8,6 +9,8 @@
 // =========================================
 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import { registerLinkedLessons } from "../teaching-viz/linked-learning.js";
+import { chapter04 } from "../teaching-viz/chapter-04.js";
 
 window.DEMOS = window.DEMOS || {};
 
@@ -21,22 +24,11 @@ function __resolveDemoName(mount) {
       || null;
 }
 function __renderDemo(mount) {
-  if (!mount || mount.dataset.rendered) return;
+  if (!mount || mount.dataset.rendered || mount.dataset.rendering) return;
   const name = __resolveDemoName(mount);
   if (!name) return;
   const fn = (window.DEMOS && window.DEMOS[name]) || (typeof DEMOS !== "undefined" && DEMOS[name]);
-  if (!fn) return;
-  // async demo 也要 await，否则 await 后的 throw 不会被 try/catch 捕获
-  Promise.resolve()
-    .then(() => fn(mount))
-    .then(() => { mount.dataset.rendered = "1"; })
-    .catch(err => {
-      // 友好的错误显示，方便定位哪个 demo 跑不起来
-      console.error(`[demo ${name}]`, err);
-      mount.dataset.rendered = "error";
-      const msg = (err && err.stack) ? String(err.stack) : String(err);
-      mount.innerHTML = `<div class="demo-error"><strong>Demo ${name} 跑不起来：</strong><pre>${msg.replace(/[<&>]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}</pre></div>`;
-    });
+  safeRenderDemo(mount, fn);
 }
 function __renderAllDemos() {
   document.querySelectorAll(".demo-mount, [id^='demo-mount-']").forEach(__renderDemo);
@@ -530,3 +522,5 @@ window.DEMOS["d-4-5"] = async function (mount) {
   thInput.addEventListener("input", render);
   render();
 };
+
+registerLinkedLessons(d3, chapter04(d3));
