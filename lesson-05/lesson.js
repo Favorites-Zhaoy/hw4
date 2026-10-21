@@ -1,3 +1,4 @@
+import { renderDemo as safeRenderDemo } from "../teaching-viz/render-demo.js";
 // Doc-05 时序数据可视化 · 集成教学页面 · 5 个 demo
 // =========================================
 //   5.1 时间属性      → d-5-1 attributes
@@ -8,6 +9,9 @@
 // =========================================
 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import { createSpiralGeometry, loadWeather, loadNames, STORY_DATA } from "../teaching-viz/models-05.js";
+import { registerLinkedLessons } from "../teaching-viz/linked-learning.js";
+import { chapter05 } from "../teaching-viz/chapter-05.js";
 
 window.DEMOS = window.DEMOS || {};
 
@@ -21,11 +25,11 @@ function __resolveDemoName(mount) {
       || null;
 }
 function __renderDemo(mount) {
-  if (!mount || mount.dataset.rendered) return;
+  if (!mount || mount.dataset.rendered || mount.dataset.rendering) return;
   const name = __resolveDemoName(mount);
   if (!name) return;
   const fn = (window.DEMOS && window.DEMOS[name]) || (typeof DEMOS !== "undefined" && DEMOS[name]);
-  if (fn) { fn(mount); mount.dataset.rendered = "1"; }
+  safeRenderDemo(mount, fn);
 }
 function __renderAllDemos() {
   document.querySelectorAll(".demo-mount, [id^='demo-mount-']").forEach(__renderDemo);
@@ -163,8 +167,7 @@ window.DEMOS["d-5-1"] = async function (mount) {
 // ⭐ d-5-2 · 法国人名折线图（5.2）
 // =========================================
 window.DEMOS["d-5-2"] = async function (mount) {
-  const res = await fetch('./data/french_names.json');
-  const data = await res.json();
+  const data = await loadNames();
 
   const W = 720, H = 380, M = { t: 30, r: 30, b: 50, l: 60 };
   const innerW = W - M.l - M.r, innerH = H - M.t - M.b;
@@ -280,7 +283,7 @@ window.DEMOS["d-5-2"] = async function (mount) {
 // ⭐ d-5-3 · 日历热图（5.3）
 // =========================================
 window.DEMOS["d-5-3"] = async function (mount) {
-  const dataRaw = await d3.csv('./data/weather_2024.csv', d3.autoType);
+  const dataRaw = await loadWeather(d3);
   const byKey = new Map(dataRaw.map(d => [d.date, d.temp_max]));
 
   const year = 2024;
@@ -436,7 +439,7 @@ window.DEMOS["d-5-3"] = async function (mount) {
 // ⭐ d-5-4 · 阿基米德螺旋（5.4）
 // =========================================
 window.DEMOS["d-5-4"] = async function (mount) {
-  const dataRaw = await d3.csv('./data/weather_2024.csv', d3.autoType);
+  const dataRaw = await loadWeather(d3);
   const byKey = new Map(dataRaw.map(d => [d.date, d.temp_max]));
   const year = 2024;
   const start = new Date(year, 0, 1);
@@ -449,11 +452,8 @@ window.DEMOS["d-5-4"] = async function (mount) {
   const startRadius = 60;
   let theta = (startRadius - 0) / b;
 
-  function pos(t) {
-    const r = 0 + b * t;
-    return { x: r * Math.cos(t), y: r * Math.sin(t), r };
-  }
-  function angleDelta(r) { return boxSize / Math.sqrt(b * b + r * r); }
+  const geometry = createSpiralGeometry({ boxSize, coilGap, startRadius });
+  const { pos, angleDelta } = geometry;
 
   const W = 720, H = 720;
   const M = { t: H / 2, l: W / 2 };
@@ -500,15 +500,7 @@ window.DEMOS["d-5-4"] = async function (mount) {
     svg.selectAll("path.seg")
       .data(segs).join("path")
       .attr("class", "seg")
-      .attr("d", d => {
-        const r0 = pos(d.t0).r, r1 = pos(d.t1).r;
-        const rg0 = r0 + ringT, rg1 = r1 + ringT;
-        const x0o = rg0 * Math.cos(d.t0), y0o = rg0 * Math.sin(d.t0);
-        const x1o = rg1 * Math.cos(d.t1), y1o = rg1 * Math.sin(d.t1);
-        const x1i = r1 * Math.cos(d.t1), y1i = r1 * Math.sin(d.t1);
-        const x0i = r0 * Math.cos(d.t0), y0i = r0 * Math.sin(d.t0);
-        return `M ${x0o} ${y0o} A ${rg0} ${rg0} 0 0 1 ${x1o} ${y1o} L ${x1i} ${y1i} A ${r1} ${r1} 0 0 0 ${x0i} ${y0i} Z`;
-      })
+      .attr("d", d => geometry.arcPath(d.t0, d.t1))
       .attr("fill", d => d.value != null ? colorScale(d.value) : "#e2e8f0")
       .attr("stroke", "#fff").attr("stroke-width", 0.5)
       .on("mouseover", function (event, d) {
@@ -560,36 +552,7 @@ window.DEMOS["d-5-4"] = async function (mount) {
 // =========================================
 window.DEMOS["d-5-5"] = async function (mount) {
   // 数据：侏罗纪公园 5 个角色
-  const data = {
-    title: "侏罗纪公园 (Jurassic Park, 1993)",
-    duration_min: 127,
-    characters: [
-      { name: "Alan Grant & Kids", color: "#1976d2", width: 4, points: [
-        { time:  5, y:  80 }, { time: 18, y: 130 }, { time: 38, y: 180 },
-        { time: 65, y: 150 }, { time: 78, y:  80 }, { time: 88, y: 110 },
-        { time:105, y:  60 }, { time:125, y:  40 }
-      ]},
-      { name: "T-REX", color: "#d32f2f", width: 6, points: [
-        { time: 75, y: 280 }, { time: 78, y: 130 }, { time: 88, y: 200 },
-        { time:100, y: 250 }, { time:120, y: 290 }
-      ]},
-      { name: "Raptors", color: "#f57c00", width: 4, points: [
-        { time: 50, y: 320 }, { time: 80, y: 290 }, { time: 95, y: 230 },
-        { time:108, y: 180 }, { time:118, y: 100 }
-      ]},
-      { name: "Malcolm", color: "#7b1fa2", width: 3, points: [
-        { time: 22, y:  40 }, { time: 45, y:  90 }, { time: 70, y: 120 },
-        { time: 82, y: 130 }, { time: 95, y: 200 }, { time:120, y: 240 }
-      ]},
-      { name: "Dilophosaurus", color: "#388e3c", width: 3, points: [
-        { time: 38, y: 350 }, { time: 48, y: 320 }, { time: 58, y: 340 }
-      ]}
-    ],
-    events: [
-      { time: 78, x: 78, y: 105, name: "T-REX 攻击", desc: "T-REX 冲出围栏攻击 Alan & Kids 的车" },
-      { time: 48, x: 48, y: 335, name: "Nedry 事件", desc: "Dilophosaurus 攻击 Nedry" }
-    ]
-  };
+  const data = STORY_DATA;
 
   const W = 800, H = 460, M = { t: 30, r: 30, b: 40, l: 110 };
 
@@ -703,3 +666,5 @@ window.DEMOS["d-5-5"] = async function (mount) {
 
   render();
 };
+
+registerLinkedLessons(d3, chapter05(d3));
