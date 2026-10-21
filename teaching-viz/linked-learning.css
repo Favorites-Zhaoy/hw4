@@ -5,7 +5,7 @@
 .tv-host button:hover { background:#e0ebba; }.tv-host button:disabled { opacity:.45; cursor:default; }
 .tv-host button:focus-visible, .tv-host select:focus-visible, .tv-host input:focus-visible, .tv-host [tabindex]:focus-visible { outline:3px solid #617e36; outline-offset:3px; }
 .tv-host button[aria-pressed=true] { background:#123e37; color:#fffef8; border-color:#123e37; box-shadow:inset 4px 0 #dfeb91; }
-.tv-host .tv-toggle { background:#123e37; color:#fffef8; }.tv-host .tv-zoom-toggle { margin-left:8px; }.tv-host button[hidden] { display:none; }.tv-body { margin-top:14px; border:1px solid var(--tv-line); padding:18px; background:#f7f9ef; min-width:0; }.tv-body[hidden] { display:none; }
+.chapter > .tabs { flex-wrap:wrap; }.chapter .tab-btn[data-tab="mapping"] { font-weight:600; }.tv-host button[hidden] { display:none; }.tv-body { margin-top:14px; border:1px solid var(--tv-line); padding:18px; background:#f7f9ef; min-width:0; }.tv-body[hidden] { display:none; }
 .tv-host h3 { margin:0 0 8px; font-size:19px; }.tv-host h4 { font-size:16px; margin:12px 0; }.tv-host p { font-size:14px; line-height:1.8; }.tv-goal { margin:0 0 18px; }
 .tv-workspace { display:grid; grid-template-columns:minmax(0,1fr); gap:18px; min-width:0; }.tv-code-pane,.tv-figure { min-width:0; }.tv-steps { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:12px; }.tv-steps button { font-size:13px; }
 .tv-code-view { max-height:420px; overflow:auto; position:relative; }.tv-code-view pre { min-width:0; max-width:100%; font-size:13px; line-height:1.7; padding:14px 12px; margin:0 0 10px; white-space:pre; overflow:auto; }.tv-code-line { position:relative; }.tv-line-active { background:#dfeb9138; outline:1px solid #d4e78b; border-radius:1px; }

@@ -60,6 +60,8 @@ const I18N = {
     // === Tab 按钮 ===
     'tab.explain': '📖 讲解',
     'tab.code': '⌨️ 关键代码',
+    'tab.mapping': '→ 映射',
+    'mapping.loading': '图解加载中…',
     'tab.demo': '▶️ 演示',
 
     // === 公共 ===
@@ -170,11 +172,11 @@ const I18N = {
     'portal.hero.h1': '《可视化导论》',
 
     'portal.tagline': '课程章节',
-    'portal.intro': '点击章节名称进入学习；每章均提供 📖 讲解 / ⌨️ 关键代码 / ▶️ 演示。',
+    'portal.intro': '点击章节名称进入学习；每章均提供 📖 讲解 / ⌨️ 关键代码 / → 映射 / ▶️ 演示。',
     'portal.section.usage': '使用方式',
     'portal.section.about': '关于本课程',
     'portal.usage.classroom.title': '课堂讲解',
-    'portal.usage.classroom.desc': '打开任一章节后，左侧选小节，顶部切换 讲解 / 代码 / 演示 三个 tab，一边讲解、一边实时运行。',
+    'portal.usage.classroom.desc': '打开任一章节后，左侧选小节，顶部切换 讲解 / 代码 / 映射 / 演示 四个 tab，一边讲解、一边实时运行。',
     'portal.usage.student.title': '学生自学',
     'portal.usage.student.desc': '按章节顺序过完所有 ⭐ 关键点，每个关键点配有「为什么这么写」+「有什么坑」段落。',
     'portal.usage.teacher.title': '教师备课时',
@@ -263,6 +265,8 @@ const I18N = {
     // === Tabs ===
     'tab.explain': '📖 Explain',
     'tab.code': '⌨️ Key Code',
+    'tab.mapping': '→ Mapping',
+    'mapping.loading': 'Loading the linked diagram…',
     'tab.demo': '▶️ Demo',
 
     // === Common ===
@@ -360,11 +364,11 @@ const I18N = {
     'portal.hero.h1': 'Introduction to Visualization',
     'portal.hero.tag': 'VISUALIZATION · INTRODUCTION',
     'portal.tagline': 'Course Chapters',
-    'portal.intro': 'Click a chapter title to start learning. Each chapter offers 📖 Explain / ⌨️ Key Code / ▶️ Demo.',
+    'portal.intro': 'Click a chapter title to start learning. Each chapter offers 📖 Explain / ⌨️ Key Code / → Mapping / ▶️ Demo.',
     'portal.section.usage': 'How to Use',
     'portal.section.about': 'About This Course',
     'portal.usage.classroom.title': 'Classroom Teaching',
-    'portal.usage.classroom.desc': 'Open any chapter, pick a section on the left, switch between Explain / Code / Demo tabs at the top. Lecture while the demo runs live.',
+    'portal.usage.classroom.desc': 'Open any chapter, pick a section on the left, switch between Explain / Code / Mapping / Demo tabs at the top. Lecture while the demo runs live.',
     'portal.usage.student.title': 'Student Self-Study',
     'portal.usage.student.desc': 'Go through all ⭐ Key Points in chapter order. Each has "why this way" + "what pitfalls" notes.',
     'portal.usage.teacher.title': 'Teacher Preparation',

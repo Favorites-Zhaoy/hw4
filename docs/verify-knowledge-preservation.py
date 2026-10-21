@@ -27,7 +27,7 @@ for section in snapshot["sections"]:
         continue
     parser = baseline.PanelParser()
     parser.feed(article)
-    if set(parser.panels) != {"explain", "code", "demo"}:
+    if not {"explain", "code", "demo"}.issubset(parser.panels):
         failures.append(f'{section["sectionId"]}: three original panels missing')
     original = baseline.git("show", f'{snapshot["baselineCommit"]}:{section["page"]}').decode("utf-8-sig")
     original_article = next(part for part in re.findall(r'<article\b.*?</article>', original, re.S) if f'id="{section["articleId"]}"' in part)

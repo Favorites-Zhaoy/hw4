@@ -27,3 +27,8 @@ test('saving another chapter preserves visits; unavailable storage degrades safe
   assert.equal(saveVisit(1, record), false);
   delete globalThis.localStorage;
 });
+
+test('mapping visits are restored without changing the existing record version', () => {
+  const record = { at: 300, section: 'ch-1-2', tab: 'mapping', offset: 180 };
+  assert.deepEqual(parseVisits(JSON.stringify({ version: 1, visits: { 1: record } }))[1], record);
+});

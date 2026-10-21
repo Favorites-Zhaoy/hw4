@@ -23,29 +23,29 @@
     }
   },
   "after": {
-    "files": 163,
-    "bytes": 4656101,
-    "allJsMjsCss": 660359,
-    "runtimeJsMjsCss": 627920,
+    "files": 164,
+    "bytes": 4667832,
+    "allJsMjsCss": 661216,
+    "runtimeJsMjsCss": 628223,
     "byExtensionBytes": {
-      ".css": 175661,
+      ".css": 175652,
       ".csv": 182129,
-      ".html": 506020,
+      ".html": 513156,
       ".jpg": 602621,
-      ".js": 452259,
-      ".json": 689404,
-      ".md": 398864,
-      ".mjs": 32439,
+      ".js": 452571,
+      ".json": 689506,
+      ".md": 402494,
+      ".mjs": 32993,
       ".pdf": 909976,
       ".png": 667548,
-      ".py": 39157,
+      ".py": 39163,
       "[none]": 23
     }
   },
-  "netJsMjsCssDeltaBytes": 224175,
-  "netRuntimeJsMjsCssDeltaBytes": 193452,
-  "netLfNormalizedJsMjsCssDeltaBytes": 222261,
-  "netLfNormalizedRuntimeJsMjsCssDeltaBytes": 191538,
+  "netJsMjsCssDeltaBytes": 225032,
+  "netRuntimeJsMjsCssDeltaBytes": 193755,
+  "netLfNormalizedJsMjsCssDeltaBytes": 223113,
+  "netLfNormalizedRuntimeJsMjsCssDeltaBytes": 191836,
   "budgetBytes": 163840,
   "allCodeBudgetStatus": "OVER_TARGET",
   "runtimeCodeBudgetStatus": "OVER_TARGET",
@@ -55,6 +55,7 @@
   "urlLiteralsInChangedCode": [
     "http://www.w3.org/2000/svg",
     "https://cdn.jsdelivr.net/npm/d3@7/+esm",
+    "https://cinger007.github.io",
     "https://www.color-blindness.com/coblis-color-blindness-simulator/"
   ],
   "newExternalUrlLiterals": [
@@ -81,11 +82,11 @@
         "sha256": "29c7611193348c5789455d74fd33a3c48ab02d9bd4a56ec77e7a0d3e1e32a642"
       },
       "after": {
-        "bytes": 3640,
-        "lfBytes": 3582,
-        "sha256": "9c524deef44650db0eb18e5ec469bc524b52190776d9640f50f3a7cac4dfb50a"
+        "bytes": 3822,
+        "lfBytes": 3764,
+        "sha256": "ce9892ae68f9b70a3e3bc66832a906a50f581a3558605a3a77df46bdafc43c0f"
       },
-      "deltaBytes": 1065
+      "deltaBytes": 1247
     },
     {
       "path": "codex_visualization_course_27_sections_spec.md",
@@ -119,6 +120,17 @@
         "sha256": "0c32ece147b4e9642e72f42edbfbef6b8d0115d89f37f8f7671588be429c8b74"
       },
       "deltaBytes": 31112
+    },
+    {
+      "path": "docs/mapping-tab-release.md",
+      "status": "added",
+      "before": null,
+      "after": {
+        "bytes": 3039,
+        "lfBytes": 3039,
+        "sha256": "2872b55961e018c5bb0e708fdfe230a5a6a5a0a479e367fa1176393370168485"
+      },
+      "deltaBytes": 3039
     },
     {
       "path": "docs/teacher-review.md",
@@ -191,22 +203,22 @@
       "status": "added",
       "before": null,
       "after": {
-        "bytes": 828,
-        "lfBytes": 800,
-        "sha256": "7ccdf45d1c7f04482a3427d4ac1bad7d12189111fed58986a7cf9f022b80ab5d"
+        "bytes": 930,
+        "lfBytes": 902,
+        "sha256": "8eb59f73c23e3340eca9c5cff9825cf7c659b07e4818c6978c11109ffb2d74d5"
       },
-      "deltaBytes": 828
+      "deltaBytes": 930
     },
     {
       "path": "docs/teaching-viz-acceptance.md",
       "status": "added",
       "before": null,
       "after": {
-        "bytes": 11046,
-        "lfBytes": 10947,
-        "sha256": "2d36e12059071cf46afb22619bd927efe5bd4f756053c790bef354c74843f5ac"
+        "bytes": 11205,
+        "lfBytes": 11104,
+        "sha256": "bce2a69aca1a9f07b2cbdc946c4161ea077914f285c00108c5cb396174b67797"
       },
-      "deltaBytes": 11046
+      "deltaBytes": 11205
     },
     {
       "path": "docs/teaching-viz-baseline.md",
@@ -224,11 +236,11 @@
       "status": "added",
       "before": null,
       "after": {
-        "bytes": 8404,
-        "lfBytes": 8404,
-        "sha256": "0feb93fa1d3b88c52d4193a40d3ad379135bb5392936b98b8f9485c764d47df0"
+        "bytes": 8654,
+        "lfBytes": 8654,
+        "sha256": "16d32858f19d28d0ba07e9a364f8b75c5d903eb041010e16e53ca7cd1bc07291"
       },
-      "deltaBytes": 8404
+      "deltaBytes": 8654
     },
     {
       "path": "docs/teaching-viz-review.md",
@@ -246,11 +258,11 @@
       "status": "added",
       "before": null,
       "after": {
-        "bytes": 3993,
-        "lfBytes": 3923,
-        "sha256": "e42ab93b6d60222d6c2b09f4989f4e5c3f7bbbf8f0a35f6c761d42d04152e47c"
+        "bytes": 3999,
+        "lfBytes": 3929,
+        "sha256": "d877b7ba5f72dbbbd239cde12f16d937b953d43f66414448e99ad5f5840f0045"
       },
-      "deltaBytes": 3993
+      "deltaBytes": 3999
     },
     {
       "path": "i18n.css",
@@ -266,6 +278,66 @@
         "sha256": "1aed12f760d844d5f5bf15a5d2ebcd12c5243615f06eb33d73eef15d85901284"
       },
       "deltaBytes": 80
+    },
+    {
+      "path": "i18n.js",
+      "status": "modified",
+      "before": {
+        "bytes": 34111,
+        "lfBytes": 33503,
+        "sha256": "2f7b8c87c16eab2ce407ea2c8ad210a0f5cf6059a446413ca663bc31aeca5714"
+      },
+      "after": {
+        "bytes": 34331,
+        "lfBytes": 33718,
+        "sha256": "37f38c7a0f411e34b62d8374e8d86af250c32c1dfff34ee147ce601779e99c5d"
+      },
+      "deltaBytes": 220
+    },
+    {
+      "path": "index.html",
+      "status": "modified",
+      "before": {
+        "bytes": 21316,
+        "lfBytes": 21069,
+        "sha256": "e735576a715b973e056d52f289466bbf98cccf2ad4891ea71a1b2ccbb64662a1"
+      },
+      "after": {
+        "bytes": 21376,
+        "lfBytes": 21129,
+        "sha256": "446392f1db62a4b99bd86219b5fa535228d1e387b2a98560852f069955d59e1c"
+      },
+      "deltaBytes": 60
+    },
+    {
+      "path": "learning-home.js",
+      "status": "modified",
+      "before": {
+        "bytes": 4411,
+        "lfBytes": 4411,
+        "sha256": "486d816fa7779ca9c89912a3eb6b76f461ccd70c6e05b7a74e5eed25573f23c1"
+      },
+      "after": {
+        "bytes": 4466,
+        "lfBytes": 4466,
+        "sha256": "5756da4c4478b521fb972c2ff7927a09160c38f95ee1394c428b69b92f1d8cb1"
+      },
+      "deltaBytes": 55
+    },
+    {
+      "path": "learning-progress.js",
+      "status": "modified",
+      "before": {
+        "bytes": 4622,
+        "lfBytes": 4622,
+        "sha256": "303e01ed5fb6a6b6a405759e10c413b1cf7ada1ae0b20d1870c83a39878b11e8"
+      },
+      "after": {
+        "bytes": 4633,
+        "lfBytes": 4633,
+        "sha256": "a8c3accc95f4567ab3eab4dcae3cd8c2a5b13040e51ec82f28eb7582ab6bb46b"
+      },
+      "deltaBytes": 11
     },
     {
       "path": "lesson-01/01-数据.md",
@@ -531,11 +603,11 @@
         "sha256": "266d27769350b98a4f67e18dc282d221db7e0b9d3152a81d786e10b5f0c514ca"
       },
       "after": {
-        "bytes": 84727,
-        "lfBytes": 83993,
-        "sha256": "a2021f09eeabf789de7ab8caa24ac96ba6b4610a49933e97ed99072eebc51ba4"
+        "bytes": 86041,
+        "lfBytes": 85297,
+        "sha256": "9b23173b096a041e5a5d8b829ea53fe46363c7ab708f3e338fd8cc321958c5a5"
       },
-      "deltaBytes": 141
+      "deltaBytes": 1455
     },
     {
       "path": "lesson-01/lesson.js",
@@ -591,11 +663,11 @@
         "sha256": "6576284d0339076c33ae252e112d42da7c5b49ba03c0172071c02480e6a43849"
       },
       "after": {
-        "bytes": 90535,
-        "lfBytes": 89646,
-        "sha256": "89cdf31f3a179a11e4249f74c4e2bee492457ba18c80eb29e28b763d8ad49e1a"
+        "bytes": 91596,
+        "lfBytes": 90699,
+        "sha256": "6cb67f6bc64e89e7a86504bf1e7e6b980f7f58b598e3aabb5fcaa7084cee6b66"
       },
-      "deltaBytes": 141
+      "deltaBytes": 1202
     },
     {
       "path": "lesson-02/lesson.js",
@@ -636,11 +708,11 @@
         "sha256": "e6f3ff0d119f4f5fe9c825a686010cab38caeeed3bc4523c54a0614ad7428dad"
       },
       "after": {
-        "bytes": 59468,
-        "lfBytes": 58807,
-        "sha256": "e105028b401d79ea5de229bdc3879339e34f652b9a02aaa318adbec27e89f775"
+        "bytes": 61541,
+        "lfBytes": 60864,
+        "sha256": "1194bd97f8dafff5ff53263fe0f4b8d769ffd6fff663bbdb96ce3ab0e9814c46"
       },
-      "deltaBytes": 141
+      "deltaBytes": 2214
     },
     {
       "path": "lesson-03/lecture-en.md",
@@ -696,11 +768,11 @@
         "sha256": "8c22197404bd9a3adb9f3581ca8519d6a021d1d62fd607010581405963e12057"
       },
       "after": {
-        "bytes": 42690,
-        "lfBytes": 42206,
-        "sha256": "0ea43bda977c7d87386f1dca8847c7108232ac7f6a78262dcd17bf37938c501b"
+        "bytes": 44004,
+        "lfBytes": 43510,
+        "sha256": "de51131adc56f28b64a526b277aef67a4c1cc8444a48b52a6133e558dc3365f5"
       },
-      "deltaBytes": 141
+      "deltaBytes": 1455
     },
     {
       "path": "lesson-04/lecture-en.md",
@@ -771,11 +843,11 @@
         "sha256": "4804efdd95228561129ad3449785de4ae709181ecf3aeff110c47e47002067ae"
       },
       "after": {
-        "bytes": 55637,
-        "lfBytes": 55034,
-        "sha256": "f566d5d3712fe326e40dad8efdcd471351e64da47d77ee015a4acfb4ef11d41a"
+        "bytes": 56951,
+        "lfBytes": 56338,
+        "sha256": "1350b494a6c4ee3df031525ad5cb9a61b7f695e856d4ed65f4deec5682a45695"
       },
-      "deltaBytes": 141
+      "deltaBytes": 1455
     },
     {
       "path": "lesson-05/lecture-en.md",
@@ -945,33 +1017,33 @@
       "status": "added",
       "before": null,
       "after": {
-        "bytes": 1405,
-        "lfBytes": 1405,
-        "sha256": "2f8e3e5368a9b274cf52a5814aa31b6fde9cafe8a4e5dbda004a83b973018611"
+        "bytes": 1585,
+        "lfBytes": 1585,
+        "sha256": "6a75677e36235be8dabe71bae970d110d9ce254e54ea521fa4c307812a3997a8"
       },
-      "deltaBytes": 1405
+      "deltaBytes": 1585
     },
     {
       "path": "teaching-viz/linked-learning.css",
       "status": "added",
       "before": null,
       "after": {
-        "bytes": 5165,
-        "lfBytes": 5165,
-        "sha256": "0e049ab3f5a46a4bde10c62a62d5e7fdaf90730f4ee955f12c11f7e7addda40c"
+        "bytes": 5156,
+        "lfBytes": 5156,
+        "sha256": "17da495277aabc7573739bbab741971173ac2536fb6c678b054b0f04b097ffea"
       },
-      "deltaBytes": 5165
+      "deltaBytes": 5156
     },
     {
       "path": "teaching-viz/linked-learning.js",
       "status": "added",
       "before": null,
       "after": {
-        "bytes": 12786,
-        "lfBytes": 12786,
-        "sha256": "4fca19ecf6bb3fb66afbb500cb60ba1017fa5e7789e008607c5a8e46e04f6f26"
+        "bytes": 12632,
+        "lfBytes": 12632,
+        "sha256": "31a6f76f537b23e3d03943a69db0fd2931adba61d9f34e9b3574bb75a247786d"
       },
-      "deltaBytes": 12786
+      "deltaBytes": 12632
     },
     {
       "path": "teaching-viz/models-01.js",
@@ -1049,6 +1121,21 @@
         "sha256": "a518a1f542c6159244e7afdd990b6f4565f878e094a21d1862feac358604af5e"
       },
       "deltaBytes": 2534
+    },
+    {
+      "path": "tests/learning.test.mjs",
+      "status": "modified",
+      "before": {
+        "bytes": 1716,
+        "lfBytes": 1716,
+        "sha256": "bceef465730eec5d26a3efa9d4bdad429d387f5665912790f327286c80f962f4"
+      },
+      "after": {
+        "bytes": 1987,
+        "lfBytes": 1987,
+        "sha256": "b80f7f83b793ed177c19b2b880314706cee7013b93a494dd77b22ba95ff48a46"
+      },
+      "deltaBytes": 271
     },
     {
       "path": "tests/teaching-01.test.mjs",
@@ -1143,11 +1230,11 @@
       "status": "added",
       "before": null,
       "after": {
-        "bytes": 1867,
-        "lfBytes": 1867,
-        "sha256": "3428dd9476b21876a652eea047702998bd0f56af86d29faca626d20471044d3f"
+        "bytes": 2150,
+        "lfBytes": 2150,
+        "sha256": "8ebd2ea6dba0252758044c500e945b1c5f26e92f5bae464189f0ac1787dba989"
       },
-      "deltaBytes": 1867
+      "deltaBytes": 2150
     }
   ]
 }

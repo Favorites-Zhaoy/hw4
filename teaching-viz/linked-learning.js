@@ -29,15 +29,15 @@ export function createStepState(ids) {
 
 export function createLinkedLesson(article, definition, d3) {
   if (instances.has(article)) return instances.get(article);
-  const panel = article.querySelector('.tab-panel[data-panel="code"]');
-  if (!panel) return null;
+  const codePanel = article.querySelector('.tab-panel[data-panel="code"]');
+  const panel = article.querySelector('.tab-panel[data-panel="mapping"]');
+  if (!codePanel || !panel) return null;
   const lifetime = new AbortController();
-  const originalPres = [...panel.querySelectorAll('pre')];
+  const originalPres = [...codePanel.querySelectorAll('pre')];
   const sources = originalPres.map(pre => ({ pre, code: pre.querySelector('code') ?? pre, html: (pre.querySelector('code') ?? pre).innerHTML }));
   const state = createStepState(definition.steps.map(step => step.id));
   const host = el('section', { className: 'tv-host', 'data-linked-section': definition.sectionId });
   const id = `linked-lesson-${definition.sectionId.replace('.', '-')}`;
-  const toggle = el('button', { type: 'button', 'aria-expanded': 'false', 'aria-controls': id, className: 'tv-toggle' });
   const body = el('div', { className: 'tv-body', id, hidden: true });
   const title = el('h3'), goal = el('p', { className: 'tv-goal' });
   const workspace = el('div', { className: 'tv-workspace' });
@@ -53,7 +53,7 @@ export function createLinkedLesson(article, definition, d3) {
   let stepEvents = new AbortController();
   const placeholders = new Map();
   left.append(steps, codeView); workspace.append(left, figure);
-  body.append(title, goal, workspace, source, explain, controls); host.append(toggle, body); panel.prepend(host);
+  body.append(title, goal, workspace, source, explain, controls); host.append(body); panel.replaceChildren(host);
   const previous = button(controls, '', () => { state.previous(); render(); }, lifetime.signal);
   controls.append(position);
   const next = button(controls, '', () => { state.next(); render(); }, lifetime.signal);
@@ -62,21 +62,22 @@ export function createLinkedLesson(article, definition, d3) {
     const zoomed = host.classList.toggle('tv-zoom');
     zoomButton.setAttribute('aria-pressed', String(zoomed));
   }, lifetime.signal);
-  zoomButton.className = 'tv-zoom-toggle'; toggle.after(zoomButton);
+  zoomButton.className = 'tv-zoom-toggle'; host.prepend(zoomButton);
   const motionLabel = el('label', { className: 'tv-motion' });
   const motion = el('input', { type: 'checkbox' }); motion.checked = true;
   const motionText = el('span'); motionLabel.append(motion, motionText); controls.append(motionLabel);
   const full = button(controls, '', () => { hide(); article.querySelector('.tab-btn[data-tab="demo"]')?.click(); }, lifetime.signal);
-  const closeButton = button(controls, '', () => { hide(); toggle.focus(); }, lifetime.signal);
+  const closeButton = button(controls, '', () => {
+    hide(); const codeTab = article.querySelector('.tab-btn[data-tab="code"]'); codeTab?.click(); codeTab?.focus();
+  }, lifetime.signal);
 
   function labels() {
     stepEvents.abort(); stepEvents = new AbortController();
-    toggle.textContent = active ? t('退出图解联动', 'Close linked view') : t('开启图解联动', 'Open linked view');
     title.textContent = `${definition.sectionId} · ${word(definition.title)}`;
     goal.textContent = word(definition.goal); source.textContent = word(definition.source);
     figure.setAttribute('aria-label', word(definition.title)); steps.setAttribute('aria-label', t('关键代码步骤', 'Key code steps'));
     previous.textContent = t('← 上一步', '← Previous'); next.textContent = t('下一步 →', 'Next →');
-    resetButton.textContent = t('重置', 'Reset'); full.textContent = t('原完整演示', 'Original demo'); closeButton.textContent = t('关闭', 'Close');
+    resetButton.textContent = t('重置', 'Reset'); full.textContent = t('原完整演示', 'Original demo'); closeButton.textContent = t('返回关键代码', 'Back to key code');
     zoomButton.textContent = t('放大图形', 'Enlarge figure');
     zoomButton.hidden = !active;
     zoomButton.setAttribute('aria-pressed', String(host.classList.contains('tv-zoom')));
@@ -142,7 +143,7 @@ export function createLinkedLesson(article, definition, d3) {
   async function show() {
     if (active) return;
     active = true; const request = ++version; aborter = new AbortController();
-    body.hidden = false; toggle.setAttribute('aria-expanded', 'true'); labels(); attachCode();
+    body.hidden = false; labels(); attachCode();
     const renderMount = el('div', { className: 'tv-scene' });
     renderMount.append(el('p', { role: 'status' }, t('正在读取本节教学数据…', 'Loading this section’s data…')));
     figure.replaceChildren(renderMount);
@@ -163,9 +164,8 @@ export function createLinkedLesson(article, definition, d3) {
   function hide() {
     if (!active) return;
     active = false; ++version; aborter?.abort(); scene?.destroy?.(); scene = null;
-    figure.replaceChildren(); detachCode(); body.hidden = true; toggle.setAttribute('aria-expanded', 'false'); labels();
+    figure.replaceChildren(); detachCode(); body.hidden = true; labels();
   }
-  toggle.addEventListener('click', () => active ? hide() : show(), { signal: lifetime.signal });
   motion.addEventListener('change', () => {
     if (motion.checked && active && scene) { d3.select(figure).selectAll('*').interrupt(); render(); }
   }, { signal: lifetime.signal });
@@ -178,13 +178,14 @@ export function createLinkedLesson(article, definition, d3) {
   document.addEventListener('click', event => {
     const link = event.target.closest('.chapter-nav a[data-chapter]'); if (link && link.dataset.chapter !== article.id) hide();
   }, { signal: lifetime.signal });
-  const observer = new MutationObserver(() => { if (!panel.classList.contains('active')) hide(); });
+  const syncPanel = () => { if (panel.classList.contains('active')) show(); else hide(); };
+  const observer = new MutationObserver(syncPanel);
   observer.observe(panel, { attributes: true, attributeFilter: ['class'] });
   window.addEventListener('hashchange', () => { if (location.hash && location.hash !== `#${article.id}`) hide(); }, { signal: lifetime.signal });
   document.addEventListener('wbl:localechange', () => { const reopen = active; hide(); labels(); if (reopen) show(); }, { signal: lifetime.signal });
   const controller = { show, hide, selectStep, reset() { state.reset(); scene?.reset?.(); render(); },
     destroy() { hide(); stepEvents.abort(); lifetime.abort(); observer.disconnect(); host.remove(); instances.delete(article); } };
-  instances.set(article, controller); labels(); return controller;
+  instances.set(article, controller); labels(); queueMicrotask(syncPanel); return controller;
 }
 export function registerLinkedLessons(d3, definitions) {
   document.body.dataset.teachingReady = '1';

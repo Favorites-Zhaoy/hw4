@@ -1,6 +1,6 @@
 // Browser-local visits, deliberately separate from completion or assessment.
 export const STORAGE_KEY = 'vis-course-visits-v1';
-const tabs = ['explain', 'code', 'demo'];
+const tabs = ['explain', 'code', 'mapping', 'demo'];
 const sectionCounts = [0, 5, 4, 8, 5, 5];
 
 export function parseVisits(raw) {

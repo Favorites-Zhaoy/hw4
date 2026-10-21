@@ -7,7 +7,7 @@ import { chapter03 } from '../teaching-viz/chapter-03.js';
 import { chapter04 } from '../teaching-viz/chapter-04.js';
 import { chapter05 } from '../teaching-viz/chapter-05.js';
 
-test('all 27 sections retain three panels and have unique, bounded code focuses',()=>{
+test('all 27 sections have four tabs including direct mapping and bounded code focuses',()=>{
  const factories=[chapter01,chapter02,chapter03,chapter04,chapter05],counts=[5,4,8,5,5];
  const definitions=factories.flatMap(factory=>factory({}));assert.equal(definitions.length,27);
  assert.equal(new Set(definitions.map(d=>d.sectionId)).size,27);
@@ -17,7 +17,11 @@ test('all 27 sections retain three panels and have unique, bounded code focuses'
   for(const definition of factory({})){
    const id='ch-'+definition.sectionId.replace('.','-');
    const article=html.match(new RegExp(`<article[^>]*id="${id}"[\\s\\S]*?<\/article>`))[0];
-   for(const panel of ['explain','code','demo'])assert.ok(article.includes(`data-panel="${panel}"`));
+   for(const panel of ['explain','code','mapping','demo']){
+    assert.equal([...article.matchAll(new RegExp(`data-panel="${panel}"`,'g'))].length,1,`${id}: one ${panel} panel`);
+    assert.equal([...article.matchAll(new RegExp(`data-tab="${panel}"`,'g'))].length,1,`${id}: one ${panel} tab`);
+   }
+   assert.ok(article.includes('data-i18n="tab.mapping">→ 映射</button>'));
    assert.ok(definition.steps.length>=3);assert.equal(new Set(definition.steps.map(s=>s.id)).size,definition.steps.length);
    const codePanel=article.match(/<div[^>]*data-panel="code"[\s\S]*?(?=<div[^>]*data-panel="demo")/)[0];
    const blocks=[...codePanel.matchAll(/<pre\b[^>]*>([\s\S]*?)<\/pre>/g)].map(m=>m[1].replace(/<\/?[a-zA-Z][^>]*>/g,'').split('\n'));

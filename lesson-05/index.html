@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../lesson-theme.css" />
   <link rel="stylesheet" href="../teaching-viz/linked-learning.css" />
   <meta name="theme-color" content="#e1eb91" />
-  <script type="module" src="../learning-progress.js"></script>
+  <script type="module" src="../learning-progress.js?v=20261021-mapping"></script>
   <script type="module" src="../teaching-viz/fallback.js"></script>
 </head>
 <body data-page-node-id="y1T1XJjADGruGsRhniGnJi">
@@ -30,10 +30,10 @@
   <header class="lesson-header" data-page-node-id="xiKuJJiATOPGH89ANWCod7">
     <div data-page-node-id="Y3WwL7H8yupNslBGp5YLBs">
       <h1 data-page-node-id="ChyFxseNhLJG1uU3WLomUD">第 5 章 时序数据可视化</h1>
-      <p class="subtitle" data-page-node-id="N6yEBjWwPCU2fLChzB5QWv">Doc-05 集成教学页面 · 讲解 ⇄ 代码 ⇄ 演示 三 tab 切换 · 5 个小节</p>
+      <p class="subtitle" data-page-node-id="N6yEBjWwPCU2fLChzB5QWv">Doc-05 集成教学页面 · 讲解 ⇄ 代码 ⇄ 映射 ⇄ 演示 四 tab 切换 · 5 个小节</p>
     </div>
     <div class="header-tip" data-page-node-id="10sRHnwRqYkxya36aADOOc">
-      <span class="kbd" data-page-node-id="GuBzwP5BGKRn1HOZa6OH1E">Tab</span> 切换章节 · 每个章节内三 tab 自由切换
+      <span class="kbd" data-page-node-id="GuBzwP5BGKRn1HOZa6OH1E">Tab</span> 切换章节 · 每个章节内四 tab 自由切换
     </div>
   </header>
 
@@ -63,6 +63,7 @@
         <div class="tabs" data-page-node-id="5zaiMZI7NIFWPd3sg5AN30">
           <button class="tab-btn active" data-tab="explain" data-page-node-id="KyPCvjS7C8OyKya6N8wLbw" data-i18n="tab.explain">📖 讲解</button>
           <button class="tab-btn" data-tab="code" data-page-node-id="8zYRzG5tBXMASOeiNiFxAZ" data-i18n="tab.code">⌨️ 关键代码</button>
+          <button class="tab-btn" data-tab="mapping" data-i18n="tab.mapping">→ 映射</button>
           <button class="tab-btn" data-tab="demo" data-page-node-id="G5BUvnTUwskOgNBLZtJHR9" data-i18n="tab.demo">▶️ 演示</button>
         </div>
         <div class="tab-panels" data-page-node-id="OwJxxaSaLFFzv2md701fzP">
@@ -100,6 +101,7 @@
               <li data-lang="en-US" hidden>Mismatched <strong>structure</strong> → weekdays/weekends, leap years all go wrong</li>
             </ul>
           </div>
+          <div class="tab-panel" data-panel="mapping"><p class="tv-mapping-status" role="status" data-i18n="mapping.loading">图解加载中…</p></div>
           <div class="tab-panel" data-panel="code" data-page-node-id="VGWKDTTBAIiH07Sqh8kkhu">
             <h3 data-lang="zh-CN">⭐ 关键代码</h3>
             <h3 data-lang="en-US" hidden>⭐ Key Code</h3>
@@ -149,6 +151,7 @@ console.log(days.length);  // 366（闰年）</code></pre>
         <div class="tabs" data-page-node-id="OFBTvF04gwHA6wDC0SkwuH">
           <button class="tab-btn active" data-tab="explain" data-page-node-id="F4ABUin2JZRxsjsA5n6g5K" data-i18n="tab.explain">📖 讲解</button>
           <button class="tab-btn" data-tab="code" data-page-node-id="jbeCnXCE5dZpzElHfrSVTK" data-i18n="tab.code">⌨️ 关键代码</button>
+          <button class="tab-btn" data-tab="mapping" data-i18n="tab.mapping">→ 映射</button>
           <button class="tab-btn" data-tab="demo" data-page-node-id="6Dq4QEFUCWF1kIn88h6Fcb" data-i18n="tab.demo">▶️ 演示</button>
         </div>
         <div class="tab-panels" data-page-node-id="9fgFkFA2w82fCl1nQ83CnA">
@@ -171,6 +174,7 @@ console.log(days.length);  // 366（闰年）</code></pre>
               <li data-lang="en-US" hidden><strong>Choosing in practice</strong>: ≤50 points use linear; 50–500 use monotoneX / curveCatmullRom; >500 consider area / box plot.</li>
             </ul>
           </div>
+          <div class="tab-panel" data-panel="mapping"><p class="tv-mapping-status" role="status" data-i18n="mapping.loading">图解加载中…</p></div>
           <div class="tab-panel" data-panel="code" data-page-node-id="nB8scp9HQmBahpcIcD2rxZ">
             <h3 data-lang="zh-CN">⭐ 关键代码</h3>
             <h3 data-lang="en-US" hidden>⭐ Key Code</h3>
@@ -245,6 +249,7 @@ svg.append('rect')               // 覆盖矩形
         <div class="tabs" data-page-node-id="hmdqc7qjV8AalWMSSE11qB">
           <button class="tab-btn active" data-tab="explain" data-page-node-id="fOvqNMYKudZ88slu89OECy" data-i18n="tab.explain">📖 讲解</button>
           <button class="tab-btn" data-tab="code" data-page-node-id="vaDpeSNhQvVOMU5ht85v38" data-i18n="tab.code">⌨️ 关键代码</button>
+          <button class="tab-btn" data-tab="mapping" data-i18n="tab.mapping">→ 映射</button>
           <button class="tab-btn" data-tab="demo" data-page-node-id="3nS6VklfYn7Fd67utAdSk6" data-i18n="tab.demo">▶️ 演示</button>
         </div>
         <div class="tab-panels" data-page-node-id="5qVfSHYAtdkXNJsYw9Jsrh">
@@ -280,6 +285,7 @@ svg.append('rect')               // 覆盖矩形
             <p data-lang="zh-CN">判断 7 天前与今天是否同月——是则同月分割线，否则需要画月线。这是日历可视化的核心算法。</p>
             <p data-lang="en-US" hidden>Check whether 7 days ago and today are in the same month—if so, draw a same-month separator; otherwise draw a month-divider. This is the core algorithm of calendar visualization.</p>
           </div>
+          <div class="tab-panel" data-panel="mapping"><p class="tv-mapping-status" role="status" data-i18n="mapping.loading">图解加载中…</p></div>
           <div class="tab-panel" data-panel="code" data-page-node-id="OtnAqNU5CV94DyDoHQDPL3">
             <h3 data-lang="zh-CN">⭐ 关键代码</h3>
             <h3 data-lang="en-US" hidden>⭐ Key Code</h3>
@@ -353,6 +359,7 @@ function isFirstDayOfMonth(date) {
         <div class="tabs" data-page-node-id="Q140vFsUMUKqmLpBLjAPUb">
           <button class="tab-btn active" data-tab="explain" data-page-node-id="1Jt1Tch3gKGd3b3zQcQ0IF" data-i18n="tab.explain">📖 讲解</button>
           <button class="tab-btn" data-tab="code" data-page-node-id="DCrH4SmZkSTPvGpE0DLAoH" data-i18n="tab.code">⌨️ 关键代码</button>
+          <button class="tab-btn" data-tab="mapping" data-i18n="tab.mapping">→ 映射</button>
           <button class="tab-btn" data-tab="demo" data-page-node-id="daQ1vfBdHUoh8xu5c4o44G" data-i18n="tab.demo">▶️ 演示</button>
         </div>
         <div class="tab-panels" data-page-node-id="TLctGLgv4DG7EB4CZTyGLo">
@@ -378,6 +385,7 @@ function isFirstDayOfMonth(date) {
             <p data-lang="zh-CN">每个日期对应螺旋上的一个扇环——4 个关键点：起点外/终点外/终点内/起点内，闭合回起点。</p>
             <p data-lang="en-US" hidden>Each date maps to a sector ring on the spiral—4 key points: outer start / outer end / inner end / inner start, closing back to the start.</p>
           </div>
+          <div class="tab-panel" data-panel="mapping"><p class="tv-mapping-status" role="status" data-i18n="mapping.loading">图解加载中…</p></div>
           <div class="tab-panel" data-panel="code" data-page-node-id="24jPW94PhuUW30qRhGUQ9D">
             <h3 data-lang="zh-CN">⭐ 关键代码</h3>
             <h3 data-lang="en-US" hidden>⭐ Key Code</h3>
@@ -450,6 +458,7 @@ function segmentPath(t0, t1) {
         <div class="tabs" data-page-node-id="YAcFlHmu2HzqxuvDQ1VTDE">
           <button class="tab-btn active" data-tab="explain" data-page-node-id="QfHKxLyDuCWxbNx8StlHH3" data-i18n="tab.explain">📖 讲解</button>
           <button class="tab-btn" data-tab="code" data-page-node-id="qLQDL8hD0mm1mhyrQnA4tJ" data-i18n="tab.code">⌨️ 关键代码</button>
+          <button class="tab-btn" data-tab="mapping" data-i18n="tab.mapping">→ 映射</button>
           <button class="tab-btn" data-tab="demo" data-page-node-id="sIq7JCQotehF2tIUywHqaS" data-i18n="tab.demo">▶️ 演示</button>
         </div>
         <div class="tab-panels" data-page-node-id="5GRqwntGMapGXIlXTa2Fv6">
@@ -487,6 +496,7 @@ function segmentPath(t0, t1) {
             <p data-lang="zh-CN">monotoneX 保证"不过度弯曲"但会让线"过于直"，<strong data-page-node-id="1wVn5yuev64CuJjsxf8i0p">失去叙事的"河流感"</strong>。Catmull-Rom 张力系数 0.5 是经验值——既能流动又不震荡。</p>
             <p data-lang="en-US" hidden>monotoneX guarantees “no over-curving” but makes lines “too straight,” <strong>losing the narrative “river feel”</strong>. Catmull-Rom’s 0.5 tension is an empirical value—flows well without oscillating.</p>
           </div>
+          <div class="tab-panel" data-panel="mapping"><p class="tv-mapping-status" role="status" data-i18n="mapping.loading">图解加载中…</p></div>
           <div class="tab-panel" data-panel="code" data-page-node-id="rMs8jUBuG3kZM6KiSYSmUL">
             <h3 data-lang="zh-CN">⭐ 关键代码</h3>
             <h3 data-lang="en-US" hidden>⭐ Key Code</h3>
@@ -590,7 +600,7 @@ d3.line().curve(d3.curveCatmullRom.alpha(0.5));</code></pre>
   </nav>
 
   <script type="module" src="./lesson.js?v=202609080945"></script>
-  <script type="module" src="../i18n.js"></script>
+  <script type="module" src="../i18n.js?v=20261021-mapping"></script>
   <script>
   (function () {
     var bar = document.querySelector('.course-topbar');

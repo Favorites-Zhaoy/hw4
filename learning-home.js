@@ -1,4 +1,4 @@
-import { readVisits, STORAGE_KEY } from './learning-progress.js';
+import { readVisits, STORAGE_KEY } from './learning-progress.js?v=20261021-mapping';
 
 const copy = (zh, en) => document.documentElement.lang === 'en' ? en : zh;
 const titles = [['数据', 'Data'], ['数据可视化流程', 'Visualization Workflow'], ['色彩专题', 'Color'], ['低维数据可视化', 'Low-Dimensional Data'], ['时序数据可视化', 'Time Series Data']];
@@ -27,7 +27,7 @@ function showVisits() {
     const record = visits[last];
     title.textContent = copy(`继续学习：第 ${last} 章 · ${titles[last - 1][0]}`, `Continue: Chapter ${last} · ${titles[last - 1][1]}`);
     const part = record.section.split('-').slice(1).join('.');
-    const tab = { explain: copy('讲解', 'Explain'), code: copy('关键代码', 'Key code'), demo: copy('演示', 'Demo') }[record.tab];
+    const tab = { explain: copy('讲解', 'Explain'), code: copy('关键代码', 'Key code'), mapping: copy('映射', 'Mapping'), demo: copy('演示', 'Demo') }[record.tab];
     detail.textContent = copy(`上次阅读 ${part} · ${tab}，返回时恢复阅读位置。`, `Last view: ${part} · ${tab}. Return to your saved position.`);
     resume.href = `lesson-${String(last).padStart(2, '0')}/?resume=1`;
     resume.textContent = copy('继续上次学习 ↗', 'Continue learning ↗');

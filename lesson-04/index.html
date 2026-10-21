@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../lesson-theme.css" />
   <link rel="stylesheet" href="../teaching-viz/linked-learning.css" />
   <meta name="theme-color" content="#e1eb91" />
-  <script type="module" src="../learning-progress.js"></script>
+  <script type="module" src="../learning-progress.js?v=20261021-mapping"></script>
   <script type="module" src="../teaching-viz/fallback.js"></script>
 </head>
 <body data-page-node-id="pU7Dyhx7VA70xKP2QIWiZK">
@@ -30,10 +30,10 @@
   <header class="lesson-header" data-page-node-id="v7dwZefqz3fF4LfeEFLxAQ">
     <div data-page-node-id="1rkyMLa2ssNUrWMplYNPx5">
       <h1 data-page-node-id="i1HhDhdMec36DwySGCx1pG">第 4 章 低维数据可视化</h1>
-      <p class="subtitle" data-page-node-id="WPY7bNgSYn2TZYknIyaQAS">Doc-04 集成教学页面 · 讲解 ⇄ 代码 ⇄ 演示 三 tab 切换 · 5 个小节</p>
+      <p class="subtitle" data-page-node-id="WPY7bNgSYn2TZYknIyaQAS">Doc-04 集成教学页面 · 讲解 ⇄ 代码 ⇄ 映射 ⇄ 演示 四 tab 切换 · 5 个小节</p>
     </div>
     <div class="header-tip" data-page-node-id="7HsqCgJxApWxAUc41nJDDA">
-      <span class="kbd" data-page-node-id="uSwEMhYVv1RW4ZStb6TkeS">Tab</span> 切换章节 · 每个章节内三 tab 自由切换
+      <span class="kbd" data-page-node-id="uSwEMhYVv1RW4ZStb6TkeS">Tab</span> 切换章节 · 每个章节内四 tab 自由切换
     </div>
   </header>
 
@@ -63,6 +63,7 @@
         <div class="tabs" data-page-node-id="gpZZxtZHOXaNoINFxw0hI6">
           <button class="tab-btn active" data-tab="explain" data-page-node-id="bNBhnDSpIsHWEGUTOjoFhx" data-i18n="tab.explain">📖 讲解</button>
           <button class="tab-btn" data-tab="code" data-page-node-id="ghMcPfluS8g1z2GvYNJKCb" data-i18n="tab.code">⌨️ 关键代码</button>
+          <button class="tab-btn" data-tab="mapping" data-i18n="tab.mapping">→ 映射</button>
           <button class="tab-btn" data-tab="demo" data-page-node-id="jSABuFJTql31Ji0XLTh3U5" data-i18n="tab.demo">▶️ 演示</button>
         </div>
         <div class="tab-panels" data-page-node-id="Hag4EoAxxMALlQ5SQ0AvYM">
@@ -88,6 +89,7 @@
               <li data-lang="en-US" hidden><strong>d3.autoType</strong>: auto-infers column types (number, date, boolean), saving you from manual <code>+d.field</code>.</li>
             </ul>
           </div>
+          <div class="tab-panel" data-panel="mapping"><p class="tv-mapping-status" role="status" data-i18n="mapping.loading">图解加载中…</p></div>
           <div class="tab-panel" data-panel="code" data-page-node-id="MBiQIusiWS1dLALZF6dPZQ">
             <h3 data-lang="zh-CN">⭐ 关键代码</h3>
             <h3 data-lang="en-US" hidden>&#9733; Key Code</h3>
@@ -127,6 +129,7 @@ const long = raw.flatMap(d =>
         <div class="tabs" data-page-node-id="93aUOI3NFFt4dkdwDmztxa">
           <button class="tab-btn active" data-tab="explain" data-page-node-id="dE1iwqjx1VYiKoEhFRMv4k" data-i18n="tab.explain">📖 讲解</button>
           <button class="tab-btn" data-tab="code" data-page-node-id="Ax5lc87rpDEGaABDZGuLc2" data-i18n="tab.code">⌨️ 关键代码</button>
+          <button class="tab-btn" data-tab="mapping" data-i18n="tab.mapping">→ 映射</button>
           <button class="tab-btn" data-tab="demo" data-page-node-id="JL0Jvw5stWioYUkNZWu49d" data-i18n="tab.demo">▶️ 演示</button>
         </div>
         <div class="tab-panels" data-page-node-id="waApcxE2YKCiK3QkyDo3ux">
@@ -172,6 +175,7 @@ const long = raw.flatMap(d =>
               </li>
             </ul>
           </div>
+          <div class="tab-panel" data-panel="mapping"><p class="tv-mapping-status" role="status" data-i18n="mapping.loading">图解加载中…</p></div>
           <div class="tab-panel" data-panel="code" data-page-node-id="A2ISab2kgeoXoBU9lPrTaT">
             <h3 data-lang="zh-CN">⭐ 关键代码</h3>
             <h3 data-lang="en-US" hidden>&#9733; Key Code</h3>
@@ -216,6 +220,7 @@ const xLog = d3.scaleLog()
         <div class="tabs" data-page-node-id="E2XBAo05mfZkintHUVMDqS">
           <button class="tab-btn active" data-tab="explain" data-page-node-id="PyYxiswLEIfGlIUPj88i5y" data-i18n="tab.explain">📖 讲解</button>
           <button class="tab-btn" data-tab="code" data-page-node-id="zBdrSyvwANhE7jlrle5smX" data-i18n="tab.code">⌨️ 关键代码</button>
+          <button class="tab-btn" data-tab="mapping" data-i18n="tab.mapping">→ 映射</button>
           <button class="tab-btn" data-tab="demo" data-page-node-id="jk2UwFRvFz8khJ8bKFiOE4" data-i18n="tab.demo">▶️ 演示</button>
         </div>
         <div class="tab-panels" data-page-node-id="F9GZDbi5zKdtzZgDdeHLAH">
@@ -251,6 +256,7 @@ const xLog = d3.scaleLog()
               <li data-lang="en-US" hidden><strong>Selection principles</strong>: ordered data &rarr; <code>monotoneX</code> / <code>linear</code>; jittery data &rarr; <code>catmullRom</code> / <code>basis</code> to smooth; discrete states &rarr; <code>step</code></li>
             </ul>
           </div>
+          <div class="tab-panel" data-panel="mapping"><p class="tv-mapping-status" role="status" data-i18n="mapping.loading">图解加载中…</p></div>
           <div class="tab-panel" data-panel="code" data-page-node-id="w5OhZXHwMnyhlg2SCaRe62">
             <h3 data-lang="zh-CN">⭐ 关键代码</h3>
             <h3 data-lang="en-US" hidden>&#9733; Key Code</h3>
@@ -292,6 +298,7 @@ svg.append('path').attr('d', d3.line()(points));</code></pre>
         <div class="tabs" data-page-node-id="8rcYHVl7Hu2WExHYVTKHps">
           <button class="tab-btn active" data-tab="explain" data-page-node-id="EKQACDvWIpttqKO9IfnxTt" data-i18n="tab.explain">📖 讲解</button>
           <button class="tab-btn" data-tab="code" data-page-node-id="l39ssXbiZ1u0OoPDWkgic3" data-i18n="tab.code">⌨️ 关键代码</button>
+          <button class="tab-btn" data-tab="mapping" data-i18n="tab.mapping">→ 映射</button>
           <button class="tab-btn" data-tab="demo" data-page-node-id="JP07fFzr7P85aPrBcLVt53" data-i18n="tab.demo">▶️ 演示</button>
         </div>
         <div class="tab-panels" data-page-node-id="vBmpk4jNwrNzuoA7zhGRKu">
@@ -335,6 +342,7 @@ svg.append('path').attr('d', d3.line()(points));</code></pre>
               </li>
             </ul>
           </div>
+          <div class="tab-panel" data-panel="mapping"><p class="tv-mapping-status" role="status" data-i18n="mapping.loading">图解加载中…</p></div>
           <div class="tab-panel" data-panel="code" data-page-node-id="UIH50QfIZSB0yByuCcpz1E">
             <h3 data-lang="zh-CN">⭐ 关键代码</h3>
             <h3 data-lang="en-US" hidden>&#9733; Key Code</h3>
@@ -376,6 +384,7 @@ slider.addEventListener('input', e =&gt; {
         <div class="tabs" data-page-node-id="nzLMDSCZE40qVtP9UO5i8F">
           <button class="tab-btn active" data-tab="explain" data-page-node-id="4SqFQAoFzp0CzSWObFDf9z" data-i18n="tab.explain">📖 讲解</button>
           <button class="tab-btn" data-tab="code" data-page-node-id="HmeSXdFWQ813Tmfnp2fDRH" data-i18n="tab.code">⌨️ 关键代码</button>
+          <button class="tab-btn" data-tab="mapping" data-i18n="tab.mapping">→ 映射</button>
           <button class="tab-btn" data-tab="demo" data-page-node-id="wQ8SeNxHbN2s5MDJ67JP3a" data-i18n="tab.demo">▶️ 演示</button>
         </div>
         <div class="tab-panels" data-page-node-id="uHIhq06uf1zxoCOGYMUkYs">
@@ -411,6 +420,7 @@ slider.addEventListener('input', e =&gt; {
               </li>
             </ul>
           </div>
+          <div class="tab-panel" data-panel="mapping"><p class="tv-mapping-status" role="status" data-i18n="mapping.loading">图解加载中…</p></div>
           <div class="tab-panel" data-panel="code" data-page-node-id="sFSybsPCbvFw3nuHNDFPa3">
             <h3 data-lang="zh-CN">⭐ 关键代码</h3>
             <h3 data-lang="en-US" hidden>&#9733; Key Code</h3>
@@ -471,7 +481,7 @@ const lines = EDGE_TABLE[code];   // 查表</code></pre>
   </nav>
 
   <script type="module" src="./lesson.js?v=202609080945"></script>
-  <script type="module" src="../i18n.js"></script>
+  <script type="module" src="../i18n.js?v=20261021-mapping"></script>
   <script>
   (function () {
     var bar = document.querySelector('.course-topbar');

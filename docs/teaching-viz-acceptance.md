@@ -1,5 +1,7 @@
 # 教学增强逐节验收
 
+> 首轮验收历史记录。后续27节已改为直接点击「→ 映射」，当前入口回归及43项自动测试结果见 `mapping-tab-release.md`。
+
 日期：2026-10-21（Asia/Singapore）；基线：`477706e3223ef43e66c79fd10f7abcd00d81a546`；实现分支：`codex/linked-teaching-27`。
 
 27 节均已实现并进行桌面浏览器逐步操作。下表 PASS 只覆盖写明的执行范围，不代表完整规范的每一项均通过。4.5 的原算法问题保留 NEEDS_TEACHER_REVIEW；资源目标为 OVER_TARGET。尚未测试的项目单列 NOT_RUN。

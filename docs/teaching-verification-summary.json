@@ -3,7 +3,7 @@
   "branch": "codex/linked-teaching-27",
   "baseline": "477706e3223ef43e66c79fd10f7abcd00d81a546",
   "nodeTests": {
-    "pass": 42,
+    "pass": 43,
     "fail": 0,
     "skip": 0
   },
@@ -24,5 +24,10 @@
     "4.5 NEEDS_TEACHER_REVIEW",
     "runtime JS/CSS budget OVER_TARGET"
   ],
-  "notRun": "See teaching-viz-acceptance.md for platform, parameter, clipboard, performance and learning-study limits"
+  "notRun": "See teaching-viz-acceptance.md for platform, parameter, clipboard, performance and learning-study limits",
+  "mappingTabRegression": {
+    "sections": 27,
+    "representativeViewportCases": 15,
+    "report": "mapping-tab-release.md"
+  }
 }
