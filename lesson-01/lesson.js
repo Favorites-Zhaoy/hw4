@@ -1,7 +1,11 @@
+import { renderDemo as safeRenderDemo } from "../teaching-viz/render-demo.js";
 // lesson.js —— Doc-01 集成教学页面交互逻辑
 // 1) 章节切换  2) Tab 切换  3) Demo 注入
 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import { transformRow } from "../teaching-viz/models-01.js";
+import { registerLinkedLessons } from "../teaching-viz/linked-learning.js";
+import { chapter01 } from "../teaching-viz/chapter-01.js";
 
 
 // ============================================================
@@ -13,11 +17,11 @@ function __resolveDemoName(mount) {
       || null;
 }
 function __renderDemo(mount) {
-  if (!mount || mount.dataset.rendered) return;
+  if (!mount || mount.dataset.rendered || mount.dataset.rendering) return;
   const name = __resolveDemoName(mount);
   if (!name) return;
   const fn = (window.DEMOS && window.DEMOS[name]) || (typeof DEMOS !== "undefined" && DEMOS[name]);
-  if (fn) { fn(mount); mount.dataset.rendered = "1"; }
+  safeRenderDemo(mount, fn);
 }
 function __renderAllDemos() {
   document.querySelectorAll(".demo-mount, [id^='demo-mount-']").forEach(__renderDemo);
@@ -111,16 +115,7 @@ DEMOS["d-3-1"] = async (mount) => {
   const run = async () => {
     const el = document.getElementById("d-3-1-log");
     if (el) el.textContent = "⏳ 加载 ./data/newstudent.csv...";
-    function transformRow(d) {
-      return {
-        id:       +d["序号"],
-        name:     d["姓名"].trim(),
-        gender:   d["性别"].trim(),
-        birthday: new Date(d["生日"]),
-        age:      +d["年龄"],
-        class:    d["班级"].trim(),
-      };
-    }
+
     const data = await d3.csv("./data/newstudent.csv", transformRow);
     log(`✓ 共 ${data.length} 条`);
     log("【类型验证】");
@@ -143,7 +138,7 @@ DEMOS["d-3-1"] = async (mount) => {
       </tr>`).join("")}</tbody>
     </table>`;
   };
-  document.getElementById("d-3-1-reload").addEventListener("click", run);
+  document.getElementById("d-3-1-reload").addEventListener("click", () => run().catch(() => log("数据暂不可用，请检查网络后重试。")));
   await run();
 };
 
@@ -384,3 +379,4 @@ DEMOS["d-3-5"] = (mount) => {
   document.getElementById("d-3-5-reset").onclick = () => { data = [1, 2, 3]; render(); };
   render();
 };
+registerLinkedLessons(d3, chapter01(d3));
